@@ -1,0 +1,20 @@
+{
+  "name": "malody-beatmap-checker",
+  "version": "0.0.1",
+  "description": "查看malody谱面信息",
+  "homepage": "https://github.com/yingyu5658/malody-beatmap-checker#readme",
+  "bugs": {
+    "url": "https://github.com/yingyu5658/malody-beatmap-checker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yingyu5658/malody-beatmap-checker.git"
+  },
+  "license": "MIT",
+  "author": "yingyu5658",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
