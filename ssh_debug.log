@@ -1,0 +1,20 @@
+OpenSSH_9.9p2, OpenSSL 3.4.1 11 Feb 2025
+debug1: Reading configuration data /home/yingyu5658/.ssh/config
+debug1: /home/yingyu5658/.ssh/config line 1: Applying options for github.com
+debug1: Reading configuration data /etc/ssh/ssh_config
+debug3: /etc/ssh/ssh_config line 2: Including file /etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf depth 0
+debug1: Reading configuration data /etc/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
+debug3: expanded UserKnownHostsFile '~/.ssh/known_hosts' -> '/home/yingyu5658/.ssh/known_hosts'
+debug3: expanded UserKnownHostsFile '~/.ssh/known_hosts2' -> '/home/yingyu5658/.ssh/known_hosts2'
+debug2: resolving "ssh.github.com" port 443
+debug3: resolve_host: lookup ssh.github.com:443
+debug3: channel_clear_timeouts: clearing
+debug3: ssh_connect_direct: entering
+debug1: Connecting to ssh.github.com [140.82.113.4] port 443.
+debug3: set_sock_tos: set socket 3 IP_TOS 0x48
+debug1: Connection established.
+debug1: identity file /home/yingyu5658/.ssh/id_ed25519 type 3
+debug1: identity file /home/yingyu5658/.ssh/id_ed25519-cert type -1
+debug1: Local version string SSH-2.0-OpenSSH_9.9
+kex_exchange_identification: Connection closed by remote host
+Connection closed by 140.82.113.4 port 443
