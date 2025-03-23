@@ -1,4 +1,14 @@
-[2025-3-22 20:47:56] [INFO] 这是一条INFO级别的日志
-[2025-3-22 20:55:23] [INFO] [TEST] 这是一条INFO级别的日志
-[2025-3-22 20:55:40] [INFO] TEST: 这是一条INFO级别的日志
-[2025-3-22 20:57:32] [INFO] TEST: 这是一条INFO级别的日志
+[2025-3-23 16:3:43] [INFO] YMT: 初始化命令行工具
+[2025-3-23 16:3:43] [INFO] CheackBeatmapInfo: 触发check选项
+[2025-3-23 16:3:43] [INFO] showBeatmapInfo: 进入showBeatMap函数
+[2025-3-23 16:3:43] [INFO] showBeatmapInfo: 读取谱面文件成功
+[2025-3-23 16:3:43] [INFO] showBeatmapInfo: 解析谱面文件成功
+[2025-3-23 16:3:43] [INFO] CheackBeatmapInfo: 执行calcNoteNumber函数
+[2025-3-23 16:3:43] [INFO] calcNoteNumber: 读取谱面文件成功
+[2025-3-23 16:3:43] [INFO] calcNoteNumber: 解析谱面文件成功
+[2025-3-23 16:3:43] [INFO] CheackBeatmapInfo: 退出calcNoteNumber函数
+[2025-3-23 16:3:43] [INFO] CheackBeatmapInfo: 执行getMusicBpm函数
+[2025-3-23 16:3:43] [INFO] CheackBeatmapInfo: 退出getMusicBpm函数
+[2025-3-23 16:3:43] [INFO] CheackBeatmapinfo: 提取目标字段成功
+[2025-3-23 16:3:43] [INFO] showBeatmapInfo: 信息输出成功
+[2025-3-23 16:3:43] [INFO] showBeatmapInfo: 退出showBeatMap函数

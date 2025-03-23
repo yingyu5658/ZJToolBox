@@ -25,7 +25,10 @@ class GenerateLog {
     return logTime;
   }
 
-  // 输出日志到控制台和文件
+  /*
+   * @param logLevel 日志级别
+   * @param log 日志内容
+   */
   static outputLog(logLevel, log) {
     fs.appendFile("Log.log", log, "utf8", function (err) {
       if (err) throw err;
@@ -36,8 +39,9 @@ class GenerateLog {
    * @param logLevel 日志级别 INFO WARN ERROR
    * @param data 日志内容
    * @param outputLogOnsole 是否输出到控制台
+   * @param serve 日志服务名称
    */
-  static log(logLevel, serve = "[YMT] ", data, outputLogOnsole = false) {
+  static log(logLevel, serve, data, outputLogOnsole = false) {
     if (!LogLevel[logLevel]) {
       console.error("日志级别错误", LogLevel[logLevel]);
       return -1;
@@ -46,7 +50,8 @@ class GenerateLog {
     const timestamp = this.getLogTime();
     const prefix = LogLevel[logLevel];
     const serveName = serve;
-    const log = `${timestamp}${prefix}${serveName}${data}\n`;
+    const fix = ": ";
+    const log = `${timestamp}${prefix}${serveName}${fix}${data}\n`;
     this.outputLog(logLevel, log);
 
     // 判断是否输出到控制台
@@ -59,6 +64,4 @@ class GenerateLog {
     return log;
   }
 }
-
-GenerateLog.log("INFO", "TEST: ", "这是一条INFO级别的日志", true);
 module.exports = GenerateLog;
