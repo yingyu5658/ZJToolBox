@@ -8,7 +8,7 @@ const root = new Command();
 console.log("输入<软件名称> --help 来获取帮助信息。");
 
 root
-  .version("0.0.6")
+  .version("1.0.6")
   .description("一个简单的命令行工具，有一些和引诱相关的实用功能")
   .option(
     "-c, --check <filepath>",
