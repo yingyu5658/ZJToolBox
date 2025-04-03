@@ -1,0 +1,463 @@
+重构前：
+const fs = require("fs");
+const log = require("./GenerateLog");
+const colors = require("colors");
+const Utils = require("./Utils");
+const path = require("path");
+const compressing = require("compressing");
+const { exit } = require("process");
+const { equal } = require("assert");
+
+const INFO = "INFO";
+const WARN = "WARN";
+const ERROR = "ERROR";
+
+class CheckBeatmapInfo {
+  static async parseZip(filePath) {
+    try {
+      await compressing.zip.uncompress(filePath, "./temp", {
+        zipFileNameEncoding: "UTF-8",
+      });
+    } catch (e) {
+      log.log(ERROR, "parseZip", "解压错误：" + e);
+    }
+    // 把.mc文件的路径遍历出来
+    const beatmapList = CheckBeatmapInfo.traverseDirSync("./temp/");
+    CheckBeatmapInfo.showChooseBeatmap(beatmapList);
+    // 提示用户选择要查看的谱面
+    return filePath;
+  }
+
+  // 遍历目录是否有.mc文件
+  static traverseDirSync(dirPath) {
+    var beatmapList = [];
+    const files = fs.readdirSync(dirPath);
+
+    files.forEach((file) => {
+      const filePath = path.join(dirPath, file);
+      const stats = fs.statSync(filePath);
+      if (stats.isDirectory()) {
+        // 递归调用并合并子目录结果
+        const subList = CheckBeatmapInfo.traverseDirSync(filePath);
+        beatmapList = beatmapList.concat(subList);
+      } else if (filePath.endsWith(".mc")) {
+        beatmapList.push(filePath);
+      }
+    });
+    return beatmapList;
+  }
+
+  // 让用户选择谱面查看信息
+  static showChooseBeatmap(beatmapList) {
+    if (beatmapList.length === 1) {
+      CheckBeatmapInfo.showBeatmapInfo(beatmapList[0]);
+    }
+
+    if (beatmapList.length === 0) {
+      log.log(ERROR, "showChooseBeatmap", "错误：这似乎不是.mcz文件哦", true);
+      return -1;
+    }
+
+    console.log(
+      "扫描出 " + beatmapList.length + " 张谱面, 输入序号来选择要查看的谱面：",
+    );
+    for (let i = 0; i < beatmapList.length; i++) {
+      console.log(colors.yellow("[" + (i + 1) + "] ") + beatmapList[i]);
+    }
+
+    const readline = require("readline");
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question(
+      "请输入要查看的谱面的序号序号（输入除数字外任意字符退出）：",
+      (number) => {
+        const num = parseFloat(number);
+        if (isNaN(num) || num < 1 || num > beatmapList.length) {
+          console.log(number);
+          exit();
+        }
+        CheckBeatmapInfo.showBeatmapInfo(beatmapList[number - 1]);
+        rl.close();
+      },
+    );
+
+    return 0;
+  }
+
+  static deleteTempFile() {
+    fs.rm(
+      "./temp/",
+      {
+        recursive: true,
+        force: true,
+      },
+      (err) => {
+        if (err) {
+          log.log(
+            ERROR,
+            "deleteTempFile",
+            "清理临时文件失败，请手动删除：" + err,
+            true,
+          );
+        }
+
+        Utils.showAD();
+        log.log(INFO, "deleteTempFile", "清理临时文件成功", true);
+      },
+    );
+  }
+
+  static calcNoteNumber(data, filePath) {
+    return data.note?.length || 0;
+  }
+
+  static showBeatmapInfo(filePath) {
+    log.log(INFO, "showBeatmapInfo", "进入showBeatMap函数");
+    try {
+      // 同步读取文件内容
+      const rawData = fs.readFileSync(filePath, "utf8");
+      log.log(INFO, "showBeatmapInfo", "读取谱面文件成功");
+
+      // 解析json字符串为对象
+      const data = JSON.parse(rawData);
+      log.log(INFO, "showBeatmapInfo", "解析谱面文件成功");
+
+      // ===========================提取目标字段==============================
+      // 谱师
+      const creator = data.meta?.creator;
+      // 歌曲标题
+      const title = data.meta?.song?.title;
+      // 曲师
+      const artist = data.meta?.song?.artist;
+      // 物量
+      const resultNoteNumber = CheckBeatmapInfo.calcNoteNumber(data, filePath);
+      // BPM
+      const bpm = CheckBeatmapInfo.getMusicBpm(data);
+      // 轨道数量
+      const column = data.meta.mode_ext.column;
+      // =======================================================================
+
+      log.log(INFO, "CheackBeatmapinfo", "提取目标字段成功");
+
+      console.log(colors.blue("==========谱面信息=========="));
+      console.log(colors.blue("标题    : " + title));
+      console.log(colors.blue("谱师    : " + creator));
+      console.log(colors.blue("曲师    : " + artist));
+      console.log(colors.blue("物量    : " + resultNoteNumber));
+      console.log(colors.blue("BPM     : " + bpm));
+      console.log(colors.blue("轨道数量: " + column));
+      console.log(colors.blue("============================="));
+      log.log(INFO, "showBeatmapInfo", "信息输出成功");
+      log.log(INFO, "showBeatmapInfo", "退出showBeatMap函数");
+      CheckBeatmapInfo.deleteTempFile();
+      return { creator, title, artist };
+    } catch (err) {
+      log.log(INFO, "showBeatmapInfo", "读取谱面文件失败： " + err, true);
+      return null;
+    }
+  }
+  // 获取BPM
+  static getMusicBpm(data) {
+    log.log(INFO, "CheackBeatmapInfo", "执行getMusicBpm函数");
+    const bpms = data.time.map((t) => t.bpm);
+    log.log(INFO, "CheackBeatmapInfo", "退出getMusicBpm函数");
+
+    return bpms;
+  }
+}
+module.exports = CheckBeatmapInfo;
+
+==================================分割线=========================================
+
+重构后：
+/**
+ * @file 谱面元数据数据结构
+ * @module Beatmap
+ * @author yingyu5658
+ * @version 1.0.0
+ * @license MIT
+ */
+
+/**
+ * 谱面元数据数据结构
+ *
+ *
+ */
+class BeatmapData {
+  /**
+   * @constructor
+   */
+  constructor() {
+    /** @type {string} */
+    this.creator = "";
+
+    /** @type {string} */
+    this.title = "";
+
+    /** @type {string} */
+    this.artist = "";
+
+    /** @type {number} */
+    this.noteNumber = 0;
+
+    /** @type {number} */
+    this.bpm = 0;
+
+    /** @type {number} */
+    this.column = 0;
+  }
+}
+
+module.exports = BeatmapData;
+/**
+ * @file 解析谱面信息
+ * @module Beatmap
+ * @author yingyu5658
+ * @version 1.0.0
+ * @license MIT
+ */
+
+// =========================================================================
+
+const compressing = require("compressing");
+const path = require("path");
+const fs = require("fs");
+const log = require("../../Utils/GenerateLog.js");
+const BeatmapData = require("./BeatMapData.js");
+
+const INFO = "INFO";
+const ERROR = "ERROR";
+
+/**
+ * 解析谱面核心类，职责：
+ * - 解压.mcz谱面包到临时路径
+ * - 遍历临时路径查找.mc文件
+ * - 读取.mc文件，存入标准数据结构BeatmapData
+ *
+ * @class
+ */
+class ParseBeatmap {
+  /**
+   *
+   * 把.mcz谱面包解压到临时路径
+   *
+   * @function
+   * @param {string} filePath  .mcz谱面包的路径
+   * @throws {Error} 当文件不存在、解压过程出错、无权限时抛出
+   * @since 1.0.0
+   */
+  static async unzipMcz(filePath) {
+    try {
+      await compressing.zip.uncompress(filePath, "./temp", {
+        zipFileNameEncoding: "UTF-8",
+      });
+    } catch (err) {
+      log.log(ERROR, "UnzipBeatmap", `解压谱面时发生错误${err.message}`);
+    }
+  }
+
+  /**
+   *
+   * 遍历临时目录是否有.mc文件并把绝对路径存入beatmapList数组
+   *
+   * @function
+   * @param {string} dirPath 临时目录路径，默认./temp
+   * @returns {string[]} 存储.mc谱面文件绝对路径的数组
+   * @since 1.0.0
+   */
+  static traverseTempDir(dirPath = "./temp/") {
+    // 存储谱面列表
+    var beatmapList = [];
+    const files = fs.readdirSync(dirPath);
+
+    files.forEach((file) => {
+      const filePath = path.join(dirPath, file);
+      const stats = fs.statSync(filePath);
+      if (stats.isDirectory()) {
+        // 递归调用并合并子目录结果
+        const subList = ParseBeatmap.traverseTempDir(filePath);
+        beatmapList = beatmapList.concat(subList);
+      } else if (filePath.endsWith(".mc")) {
+        beatmapList.push(filePath);
+        log.log(INFO, "traverseTempDir", `找到谱面: ${filePath}`, true);
+      }
+    });
+    return beatmapList;
+  }
+
+  /**
+   *
+   * 读取谱面文件并解析json字符串为对象
+   *
+   * @function
+   * @param {string} filePath .mc文件的绝对路径
+   * @throws err 当.mc文件不存在、无读写权限时抛出
+   * @returns {Object} data .mc文件完整对象，包含所有键
+   * @returns null 发生错误时返回
+   * @since 1.0.0
+   */
+  static parseJSONFile(filePath) {
+    try {
+      // 读取谱面文件
+      const rawData = fs.readFileSync(filePath);
+
+      // 解析json字符串为对象
+      const data = JSON.parse(rawData);
+      log.log(INFO, "getBeatmapFileData", "谱面解析成功！", true);
+      return data;
+    } catch (err) {
+      log.log(
+        ERROR,
+        "getBeatmapFileData",
+        `谱面解析失败：${err.message}`,
+        true,
+      );
+      return null;
+    }
+  }
+
+  /**
+   *
+   * 获取.mc文件json对象中的所有有用属性
+   *
+   * @function
+   * @param {Object} data json对象
+   * @returns {Object} beatmapData 包含所有有用属性的BeatmapData对象
+   * @since 1.0.0
+   */
+  static getAllData(data) {
+    const beatmapData = new BeatmapData();
+    beatmapData.title = data.meta?.song?.title;
+    beatmapData.creator = data.meta?.creator;
+    beatmapData.noteNumber = data.note?.length;
+    beatmapData.column = data.meta?.mode_ext.column;
+    beatmapData.bpm = data.time.map((t) => t.bpm);
+
+    return beatmapData;
+  }
+}
+
+module.exports = ParseBeatmap;
+/**
+ * @file 用户交互
+ * @module Beatmap
+ * @author yingyu5658
+ * @version 1.0.0
+ * @license MIT
+ */
+
+// =========================================================================
+
+const compressing = require("compressing");
+const { exit } = require("process");
+const log = require("../../Utils/GenerateLog.js");
+const colors = require("colors");
+const ParseBeatmap = require("./ParseBeatmap.js");
+
+const INFO = "INFO";
+const ERROR = "ERROR";
+
+/**
+ * 用户交互类，负责处理用户的对功能的选择
+ *
+ * @class
+ */
+class UserInterface {
+  /**
+   *
+   * 展示用户交互界面，供用户选择谱面
+   *
+   * @function
+   * @param beatmapList 存储谱面列表的数组
+   * @param filePath 临时文件夹路径
+   * @returns 0 无错误，正常返回
+   * @returns -1 出现文件错误
+   * @since 1.0.0
+   */
+  static showBeatmapChoices(beatmapList, filePath) {
+    if (beatmapList.length <= 0) {
+      log.log(ERROR, "showBeatmapChoices", "错误：文件的格式似乎不对呢 ", true);
+      return -1;
+    }
+
+    console.log(
+      `扫描出${beatmapList.length}张谱面，请输入序号来选择要查看的谱面：`,
+    );
+    for (let i = 0; i < beatmapList.length; i++) {
+      console.log(colors.yellow(`[${i + 1}] ${beatmapList[i]}`));
+    }
+    const readline = require("readline");
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+    });
+
+    rl.question("请输入要查看的谱面的序号：", (number) => {
+      const num = parseFloat(number);
+      if (isNaN(num) || num < 1 || num > beatmapList.length) {
+        console.log(number);
+        log.log(ERROR, "showBeatmapChoices", "错误：无效的输入", true);
+        exit();
+      }
+      // TODO: 展示谱面信息函数调用
+      let data = ParseBeatmap.parseJSONFile(beatmapList[num - 1]);
+      let beatmapData = ParseBeatmap.getAllData(data);
+      UserInterface.showAllBeatmapData(beatmapData);
+      rl.close();
+    });
+
+    return 0;
+  }
+  /**
+   *
+   * 展示全部谱面信息
+   *
+   * @function
+   * @param beatmapData 谱面数据对象
+   * @returns 0 无错误，正常返回
+   * @since 1.0.0
+   */
+  static showAllBeatmapData(beatmapData) {
+    console.log(colors.blue("===============谱面信息==============="));
+
+    console.log(colors.blue(`标题     :${beatmapData.title}`));
+
+    console.log(colors.blue(`谱师     :${beatmapData.creator}`));
+
+    console.log(colors.blue(`物量     :${beatmapData.noteNumber}`));
+
+    console.log(colors.blue(`BPM      :${beatmapData.bpm}`));
+
+    console.log(colors.blue(`轨道数量 :${beatmapData.column}`));
+
+    console.log(colors.blue("======================================"));
+
+    return 0;
+  }
+
+  /**
+   *
+   * 主函数
+   * @returns 0 无错误，正常返回
+   * @param {string} filePath mcz谱面包的路径
+   * @since 1.0.0
+   */
+  static async main(filePath) {
+    // 解压
+    await ParseBeatmap.unzipMcz(filePath);
+    // 遍历
+    let beatmapList = [];
+    beatmapList = ParseBeatmap.traverseTempDir("./temp/");
+    // 展示
+    UserInterface.showBeatmapChoices(beatmapList, filePath);
+  }
+}
+
+module.exports = UserInterface;
+
+
+=======================分割线===========================
+重构后，我的每一个类都新建了一个.js文件，评价我这次重构代码是否是成功且优雅的，指出优点与不足
