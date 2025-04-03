@@ -29,4 +29,4 @@ root
 
 log.log("INFO", "YMT", "初始化命令行工具");
 
-root.parse(process.argv);
+root.parse(process.argv)
