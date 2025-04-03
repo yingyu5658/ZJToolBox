@@ -1,7 +1,7 @@
 const fs = require("fs");
-const colors = require("colors");
-const log = require("./GenerateLog");
-const CheckBeatmapInfo = require("./CheckBeatmapInfo");
+const colors = require("./src/Utils/Color.js");
+const log = require("./src/Utils/GenerateLog.js");
+const beatmapUserInterface = require("./src/Malody/Beatmap/UserInterface.js");
 const { Command } = require("commander");
 const root = new Command();
 
@@ -13,10 +13,10 @@ root
   .option(
     "-c, --check <filepath>",
     "查看Malody谱面信息。注意：filepath是.mcz",
-    (filepath) => {
+    (filePath) => {
       log.log("INFO", "main", "执行查看谱面信息命令");
-      CheckBeatmapInfo.parseZip(filepath);
-      return filepath;
+      beatmapUserInterface.main(filePath);
+      return filePath;
     },
   )
   .option("-a, --about", "关于", function () {
