@@ -15,12 +15,17 @@
 添加环境变量后，可以在终端的任何位置输入程序名以运行程序，这对于经常使用的程序来说是必要的。减少了路径检索的时间。
 
 ![alt text](ReadmeImages/image.png)
+
 点击开始菜单，找到设置。在左上角搜索“环境变量”。
+
 ![alt text](<ReadmeImages/image copy.png>)
+
 在打开环境变量配置窗口后按下**n**
 
 系统变量 => 下滑找到Path 
+
 ![alt text](<ReadmeImages/image copy 3.png>)
+
 点击下方编辑，右上角新建，把含有"zjtb.exe"的路径输入到文本框中，一路确定，退出设置。
 
 如果配置无误，打开终端后输入`zjtb -v`，可以正常显示版本信息。
