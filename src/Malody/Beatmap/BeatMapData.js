@@ -8,8 +8,7 @@
 
 /**
  * 谱面元数据数据结构
- *
- *
+ * @typedef BeatmapData
  */
 class BeatmapData {
   /**

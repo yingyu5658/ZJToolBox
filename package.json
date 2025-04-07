@@ -13,11 +13,10 @@
   "license": "MIT",
   "author": "yingyu5658",
   "type": "commonjs",
-  "main": "./dist/index.js",
-  "bin": "./release/index.js",
+  "main": "./NccOutput/index.js",
+  "bin": "./NccOutput/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pkg . --targets node18-win-x64,node18-macos-x64,node18-linux --out-path dist/"
+    "build": "pkg .\\Nccoutput\\index.js --targets node18-win-x64 --out-path dist/"
   },
   "dependencies": {
     "@inquirer/prompts": "^7.4.0",
@@ -36,9 +35,8 @@
   "pkg": {
     "scripts": "build/**/*.js",
     "assets": "public/**/*",
-    "targets": [
-      "node16-linux-x64"
-    ]
+    "targets": ["node18-win-x64"],
+    "outputPath": "dist"
   },
   "devDependencies": {
     "docdash": "^2.0.2",
