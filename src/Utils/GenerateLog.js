@@ -31,8 +31,8 @@ class GenerateLog {
    * @param log 日志内容
    */
   static outputLog(logLevel, log) {
-    fs.appendFile("Log.log", log, "utf8", function (err) {
-      if (err) throw err;
+    fs.appendFileSync("Log.log", log, "utf8", function (err) {
+      console.error(err)
     });
   }
 
