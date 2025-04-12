@@ -11,7 +11,7 @@
 const compressing = require("compressing");
 const path = require("path");
 const fs = require("fs");
-const log = require("../../Utils/GenerateLog.js");
+const log = require("../../utils/GenerateLog.js");
 const BeatmapData = require("./BeatMapData.js");
 
 const INFO = "INFO";

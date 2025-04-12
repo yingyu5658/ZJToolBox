@@ -10,7 +10,7 @@
 
 const compressing = require("compressing");
 const { exit } = require("process");
-const log = require("../../Utils/GenerateLog.js");
+const log = require("../../utils/GenerateLog.js");
 const colors = require("colors");
 const ParseBeatmap = require("./ParseBeatmap.js");
 

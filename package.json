@@ -19,6 +19,7 @@
     "build": "pkg .\\Nccoutput\\index.js --targets node18-win-x64 --out-path dist/"
   },
   "dependencies": {
+    "@hizollo/osu-api": "^1.2.1",
     "@inquirer/prompts": "^7.4.0",
     "adm-zip": "^0.5.16",
     "blessed": "^0.1.81",
@@ -30,12 +31,15 @@
     "minimist": "^1.2.8",
     "node-on-android": "^0.0.2",
     "node-stream-zip": "^1.15.0",
-    "nvm": "^0.0.4"
+    "nvm": "^0.0.4",
+    "osu-api-extended": "^3.0.20"
   },
   "pkg": {
     "scripts": "build/**/*.js",
     "assets": "public/**/*",
-    "targets": ["node18-win-x64"],
+    "targets": [
+      "node18-win-x64"
+    ],
     "outputPath": "dist"
   },
   "devDependencies": {
