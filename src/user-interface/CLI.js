@@ -9,7 +9,7 @@ const INFO = "INFO"
 const WARN = "WARN"
 const ERROR = "ERROR"
 
-const VERSION = "1.0.2"
+const VERSION = "1.0.3"
 const VERSION_INFO = `ZJTB @${VERSION}`
 
 console.log(VERSION_INFO)
@@ -75,6 +75,6 @@ root.command("lbl")
     }
   )
 
-log.log("INFO", "ZJTB", "初始化");
+log.log("INFO", "ZJTB", "CLI初始化");
 
 root.parse(process.argv)

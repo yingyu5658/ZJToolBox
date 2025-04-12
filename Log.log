@@ -43,3 +43,9 @@
 [2025-4-12 19:1:25] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
 [2025-4-12 19:1:25] [INFO] getBeatmapFileData: 谱面解析成功！
 [2025-4-12 19:1:25] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 19:9:2] [INFO] ZJTB: 初始化
+[2025-4-12 19:9:6] [INFO] ZJTB: 初始化
+[2025-4-12 19:9:13] [INFO] ZJTB: 初始化
+[2025-4-12 19:9:21] [INFO] ZJTB: 初始化
+[2025-4-12 19:12:28] [INFO] ZJTB: CLI初始化
+[2025-4-12 19:13:20] [INFO] ZJTB: CLI初始化
