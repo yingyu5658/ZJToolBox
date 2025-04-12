@@ -37,6 +37,7 @@ root
 
 // mld子命令
 root.command("mld")
+  .description("Malody功能")
   .option(
     "-c, --check <filepath>",
     "查看Malody谱面信息。注意：filepath是.mcz",
@@ -48,9 +49,11 @@ root.command("mld")
   )
 
 const lbl = require("../lu-bu-lu/Functions.js");
-const { time } = require("console");
+const { time, timeStamp } = require("console");
+const Utils = require("../utils/Utils.js");
 // lbl子命令
 root.command("lbl")
+.description("卢布卢功能")
   .option(
     "--lbl",
     "决定是否炉管",
@@ -74,6 +77,12 @@ root.command("lbl")
       lbl.chooseOneFromMany(choiceNum)
     }
   )
+
+  root.command("ts")
+  .description("时间戳转换工具")
+  
+  .option("--conversion, -c <timestamp>", "把时间戳转换为YYYY-MMMM-DD hh-mm的格式", (timestamp) => {log.log(INFO, "timeStampToTime", Utils.timeStampToTime(timestamp), true)})
+  
 
 log.log("INFO", "ZJTB", "CLI初始化");
 
