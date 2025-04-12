@@ -1,0 +1,11 @@
+[
+    {
+        "functionName": "osu!",
+        "apiKey": "YOUR_API_KEY"
+    },
+
+    {
+        "functionName": "stardew-valley",
+        "userName": "THIS_USER_S_USERNAME"
+    }
+]
