@@ -17,13 +17,23 @@ console.log(VERSION_INFO)
 root
   .version(VERSION)
   .description("一个简单的命令行工具，有一些和引诱相关的实用功能\n输入\"zjtb --help\"来获取帮助信息")
-  .option("-a, --about", "关于", function () {
-    console.log(colors.yellow("ABOUT"));
-    console.log(colors.yellow("├── Author  : yingyu5658 "));
-    console.log(colors.yellow(`├── version : ${VERSION_INFO} `));
-    console.log(colors.yellow("└── Language: Javascript "));
-    console.log("作者博客：https://www.yingyu5658.cn/");
-  });
+  .option("-a, --about", "关于")
+  .option("-l, --log", "查看日志")
+
+  .action((options) => {
+    if (options.about) {
+      console.log(("ABOUT"));
+      console.log(("├── Author  : yingyu5658 "));
+      console.log((`├── version : ${VERSION_INFO} `));
+      console.log(("└── Language: Javascript "));
+      console.log("作者博客：https://www.yingyu5658.me/");
+    }
+
+    if (options.log) {
+      let log = fs.readFileSync("./Log.log",{encoding:"utf8"},(err) => {if(err) console.error(err)})
+        console.log(log)
+    }
+  })
 
 // mld子命令
 root.command("mld")
@@ -37,7 +47,8 @@ root.command("mld")
     },
   )
 
-const lbl = require("../lu-bu-lu/Functions.js")
+const lbl = require("../lu-bu-lu/Functions.js");
+const { time } = require("console");
 // lbl子命令
 root.command("lbl")
   .option(

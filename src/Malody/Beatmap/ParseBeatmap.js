@@ -106,13 +106,30 @@ class ParseBeatmap {
   }
 
   /**
+   * 
+   * 时间戳转换到正常格式时间
+   * 
+   * @param {number} timestamp 时间戳
+   * @returns {stirng} time YYYY-MM-DD hh:mm格式的时间
+   */
+
+  static timeStampToTime (timestamp) {
+    let date = new Date(timestamp * 1000);
+    let Y = date.getFullYear() + '-';
+    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    let D = (date.getDate() < 10 ? '0' + (date.getDate() ) : date.getDate()) + ' ';
+    let h = date.getHours() + ':';
+    let m = date.getMinutes();
+    return `${Y}${M}${D}${h}${m}`
+  }
+  /**
    *
    * 获取.mc文件json对象中的所有有用属性
    *
    * @function
    * @param {Object} data json对象
    * @returns {Object} beatmapData 包含所有有用属性的BeatmapData对象
-   * @since 1.0.0
+   * @since 1.1.0
    */
   static getAllData(data) {
     const beatmapData = new BeatmapData();
@@ -121,7 +138,8 @@ class ParseBeatmap {
     beatmapData.noteNumber = data.note?.length;
     beatmapData.column = data.meta?.mode_ext.column;
     beatmapData.bpm = data.time.map((t) => t.bpm);
-
+    beatmapData.version = data.meta?.version
+    beatmapData.lastModified = this.timeStampToTime(data.meta?.time)
     return beatmapData;
   }
 

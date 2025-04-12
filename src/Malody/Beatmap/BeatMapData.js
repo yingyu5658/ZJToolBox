@@ -32,6 +32,12 @@ class BeatmapData {
 
     /** @type {number} */
     this.column = 0;
+    
+    /** @type {number} */
+    this.version = "";
+
+    /** @type {number} */
+    this.lastModified     // 上一次修改时的时间戳
   }
 }
 

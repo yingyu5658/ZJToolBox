@@ -1,0 +1,45 @@
+[2025-4-12 18:40:44] [INFO] ZJTB: 初始化
+[2025-4-12 18:42:48] [INFO] ZJTB: 初始化
+[2025-4-12 18:42:56] [INFO] ZJTB: 初始化
+[2025-4-12 18:42:56] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 18:42:56] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 18:42:56] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 18:42:56] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 18:48:38] [INFO] ZJTB: 初始化
+[2025-4-12 18:48:38] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 18:48:38] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'E:\Develop\Code\ZJToolBox\src\Palette GAMMA(5).mcz'
+[2025-4-12 18:48:38] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-4-12 18:48:45] [INFO] ZJTB: 初始化
+[2025-4-12 18:48:45] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 18:48:45] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 18:48:45] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 18:48:45] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 18:59:41] [INFO] ZJTB: 初始化
+[2025-4-12 18:59:41] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 18:59:41] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 18:59:41] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 19:0:6] [INFO] ZJTB: 初始化
+[2025-4-12 19:0:6] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 19:0:6] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 19:0:6] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 19:0:6] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 19:0:27] [INFO] ZJTB: 初始化
+[2025-4-12 19:0:27] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 19:0:27] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 19:0:27] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 19:0:27] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 19:0:45] [INFO] ZJTB: 初始化
+[2025-4-12 19:0:45] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 19:0:45] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 19:0:45] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 19:0:45] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 19:0:57] [INFO] ZJTB: 初始化
+[2025-4-12 19:0:57] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 19:0:57] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 19:0:57] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 19:0:57] [INFO] delTempDir: 删除临时目录成功！
+[2025-4-12 19:1:25] [INFO] ZJTB: 初始化
+[2025-4-12 19:1:25] [INFO] main: 执行查看谱面信息命令
+[2025-4-12 19:1:25] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
+[2025-4-12 19:1:25] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-4-12 19:1:25] [INFO] delTempDir: 删除临时目录成功！

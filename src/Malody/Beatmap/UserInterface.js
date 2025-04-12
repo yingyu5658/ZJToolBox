@@ -59,7 +59,6 @@ class UserInterface {
         log.log(ERROR, "showBeatmapChoices", "错误：无效的输入", true);
         exit();
       }
-      // TODO: 展示谱面信息函数调用
       let data = ParseBeatmap.parseJSONFile(beatmapList[num - 1]);
       let beatmapData = ParseBeatmap.getAllData(data);
       UserInterface.showAllBeatmapData(beatmapData);
@@ -84,11 +83,15 @@ class UserInterface {
 
     console.log(colors.blue(`谱师     :${beatmapData.creator}`));
 
+    console.log(colors.blue(`难度     :${beatmapData.version}`));
+
     console.log(colors.blue(`物量     :${beatmapData.noteNumber}`));
 
     console.log(colors.blue(`BPM      :${beatmapData.bpm}`));
 
     console.log(colors.blue(`轨道数量 :${beatmapData.column}`));
+
+    console.log(colors.blue(`上次修改 :${beatmapData.lastModified}`));
 
     console.log(colors.blue("======================================"));
 
