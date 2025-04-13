@@ -77,9 +77,24 @@ BPM      :140.02030127464948
 ======================================
 [2025-4-5 10:53:46] [INFO] delTempDir: 删除临时目录成功！
 ```
+### B站视频下载
+输入`./zjtb -bvd -d <视频BV号>`下载，
+示例：
+```
+PS E:\Develop\Code\ZJToolBox\build\zjtb> ./zjtb bvd -d BV1YtXxYNEXA
+ZJTB @1.1.0
+[2025-4-13 23:3:4] [INFO] getCid: 获取到了BV1YtXxYNEXA的cid：29015933821
+
+[2025-4-13 23:3:4] [INFO] getDownloadUrl: 成功获取到Url：https://upos-sz-mirror08c.bilivideo.com/upgcxcode/21/38/29015933821/29015933821-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&platform=pc&trid=cc552aba357044d2935d05128a8df3eu&mid=0&oi=0x240882100c0338a114bedf96e76c9e5b&tag=&gen=playurlv3&os=08cbv&uipk=5&deadline=1744563783&og=hw&nbs=1&upsig=9ce495218f945167a2743a99a9eaea6b&uparams=e,platform,trid,mid,oi,tag,gen,os,uipk,deadline,og,nbs&bvc=vod&nettype=0&bw=204186&buvid=&build=0&dl=0&f=u_0_0&agrr=0&orderid=0,3
+
+[2025-4-13 23:3:4] [INFO] downloadVideo: 下载成功！文件已保存到./BiliBiliDownload/
+```
+
 ---
 
 ## 变更日志
+- 1.1.0 新增B站视频下载、时间戳小工具
+- 1.0.4 添加查看上次修改时间、难度、
 - 1.0.3 Malody功能新增查看难度、上次修改
 - 1.0.2 删除冗余文件
 - 1.0.1 修复字符编码问题

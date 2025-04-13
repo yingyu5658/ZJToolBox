@@ -1,117 +1,14 @@
-[2025-4-12 18:40:44] [INFO] ZJTB: 初始化
-[2025-4-12 18:42:48] [INFO] ZJTB: 初始化
-[2025-4-12 18:42:56] [INFO] ZJTB: 初始化
-[2025-4-12 18:42:56] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 18:42:56] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 18:42:56] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 18:42:56] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 18:48:38] [INFO] ZJTB: 初始化
-[2025-4-12 18:48:38] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 18:48:38] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'E:\Develop\Code\ZJToolBox\src\Palette GAMMA(5).mcz'
-[2025-4-12 18:48:38] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
-[2025-4-12 18:48:45] [INFO] ZJTB: 初始化
-[2025-4-12 18:48:45] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 18:48:45] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 18:48:45] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 18:48:45] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 18:59:41] [INFO] ZJTB: 初始化
-[2025-4-12 18:59:41] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 18:59:41] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 18:59:41] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 19:0:6] [INFO] ZJTB: 初始化
-[2025-4-12 19:0:6] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 19:0:6] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 19:0:6] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 19:0:6] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 19:0:27] [INFO] ZJTB: 初始化
-[2025-4-12 19:0:27] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 19:0:27] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 19:0:27] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 19:0:27] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 19:0:45] [INFO] ZJTB: 初始化
-[2025-4-12 19:0:45] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 19:0:45] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 19:0:45] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 19:0:45] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 19:0:57] [INFO] ZJTB: 初始化
-[2025-4-12 19:0:57] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 19:0:57] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 19:0:57] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 19:0:57] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 19:1:25] [INFO] ZJTB: 初始化
-[2025-4-12 19:1:25] [INFO] main: 执行查看谱面信息命令
-[2025-4-12 19:1:25] [INFO] traverseTempDir: 找到谱面: temp\1740058385.mc
-[2025-4-12 19:1:25] [INFO] getBeatmapFileData: 谱面解析成功！
-[2025-4-12 19:1:25] [INFO] delTempDir: 删除临时目录成功！
-[2025-4-12 19:9:2] [INFO] ZJTB: 初始化
-[2025-4-12 19:9:6] [INFO] ZJTB: 初始化
-[2025-4-12 19:9:13] [INFO] ZJTB: 初始化
-[2025-4-12 19:9:21] [INFO] ZJTB: 初始化
-[2025-4-12 19:12:28] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:13:20] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:28:3] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:29:21] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:1] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:11] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:17] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:17] [INFO] timeStampToTime: 转换结果NaN-NaN-NaN NaN:NaN
-[2025-4-12 19:30:33] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:33] [INFO] timeStampToTime: 转换结果1970-01-01 8:0
-[2025-4-12 19:30:36] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:36] [INFO] timeStampToTime: 转换结果1970-01-01 8:0
-[2025-4-12 19:30:37] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:37] [INFO] timeStampToTime: 转换结果1970-01-01 8:0
-[2025-4-12 19:30:53] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:53] [INFO] timeStampToTime: 转换结果2025-04-12 19:30
-[2025-4-12 19:30:56] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:30:56] [INFO] timeStampToTime: 转换结果2025-04-12 19:30
-[2025-4-12 19:31:9] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:31:9] [INFO] timeStampToTime: 转换结果2025-04-12 19:30
-[2025-4-12 19:31:11] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:31:11] [INFO] timeStampToTime: 转换结果2025-04-12 19:30
-[2025-4-12 19:31:23] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:31:23] [INFO] timeStampToTime: 转换结果2025-04-12 19:30
-[2025-4-12 19:31:41] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:31:41] [INFO] timeStampToTime: 2025-04-12 19:30
-[2025-4-12 19:32:47] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:32:47] [INFO] timeStampToTime: 1975-07-13 9:9
-[2025-4-12 19:32:50] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:32:50] [INFO] timeStampToTime: 1970-01-03 8:27
-[2025-4-12 19:32:56] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:32:56] [INFO] timeStampToTime: 1970-01-01 8:0
-[2025-4-12 19:34:20] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:34:20] [INFO] timeStampToTime: 1970-01-01 8:0
-[2025-4-12 19:34:53] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:34:53] [INFO] timeStampToTime: 1970-01-01 8:0
-[2025-4-12 19:35:21] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:35:21] [INFO] timeStampToTime: 1970-01-01 8:0
-[2025-4-12 19:36:20] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:36:20] [INFO] timeStampToTime: 1970-01-01 8:0
-[2025-4-12 19:38:42] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:38:42] [INFO] timeStampToTime: 1970-01-01 08:00
-[2025-4-12 19:38:47] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:38:47] [INFO] timeStampToTime: 1970-01-01 08:00
-[2025-4-12 19:38:51] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:38:51] [INFO] timeStampToTime: NaN-NaN-NaN NaN:NaN
-[2025-4-12 19:38:55] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:38:55] [INFO] timeStampToTime: 1970-01-01 07:59
-[2025-4-12 19:39:0] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:39:0] [INFO] timeStampToTime: 1969-12-30 19:31
-[2025-4-12 19:39:35] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:39:35] [INFO] timeStampToTime: 1970-01-01 07:59
-[2025-4-12 19:39:37] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:39:37] [INFO] timeStampToTime: NaN-NaN-NaN NaN:NaN
-[2025-4-12 19:39:39] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:39:39] [INFO] timeStampToTime: NaN-NaN-NaN NaN:NaN
-[2025-4-12 19:39:49] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:39:49] [INFO] timeStampToTime: NaN-NaN-NaN NaN:NaN
-[2025-4-12 19:42:51] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:43:13] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:43:13] [ERROR] timeStampToTime: 错误：时间戳有误：-1a
-[2025-4-12 19:43:13] [INFO] timeStampToTime: undefined
-[2025-4-12 19:43:42] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:43:42] [ERROR] timeStampToTime: 错误：时间戳有误：-1a
-[2025-4-12 19:43:42] [INFO] timeStampToTime: -1
-[2025-4-12 19:43:49] [INFO] ZJTB: CLI初始化
-[2025-4-12 19:43:49] [ERROR] timeStampToTime: 错误：时间戳有误：-1a
-[2025-4-12 19:43:49] [INFO] timeStampToTime: ERROR
+[2025-4-13 22:52:15] [INFO] ZJTB: CLI初始化
+[2025-4-13 22:52:18] [INFO] ZJTB: CLI初始化
+[2025-4-13 22:53:4] [INFO] ZJTB: CLI初始化
+[2025-4-13 22:53:4] [INFO] getCid: 获取到了BV1YtXxYNEXA的cid：29015933821
+[2025-4-13 22:53:4] [INFO] getDownloadUrl: 成功获取到Url：https://upos-sz-mirror08c.bilivideo.com/upgcxcode/21/38/29015933821/29015933821-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&tag=&oi=0x240882100c0338a114bedf96e76c9e5b&trid=409beccb1911497a85dcd2f86afe30au&deadline=1744563183&gen=playurlv3&nbs=1&uipk=5&platform=pc&mid=0&os=08cbv&og=hw&upsig=15024fb526c3a5d79fecad3d796184b0&uparams=e,tag,oi,trid,deadline,gen,nbs,uipk,platform,mid,os,og&bvc=vod&nettype=0&bw=204186&f=u_0_0&agrr=0&buvid=&build=0&dl=0&orderid=0,3
+[2025-4-13 22:53:4] [ERROR] downloadVideo: 下载失败：Error: ENOENT: no such file or directory, mkdir 'E:\Develop\Code\ZJToolBox\BilibiliDownload\BV1YtXxYNEXA_1744555985272.mp4'
+[2025-4-13 22:53:33] [INFO] ZJTB: CLI初始化
+[2025-4-13 22:53:33] [INFO] getCid: 获取到了BV1YtXxYNEXA的cid：29015933821
+[2025-4-13 22:53:33] [INFO] getDownloadUrl: 成功获取到Url：https://upos-sz-mirror08c.bilivideo.com/upgcxcode/21/38/29015933821/29015933821-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&deadline=1744563211&tag=&gen=playurlv3&os=08cbv&platform=pc&trid=f92a5426517b41b6b436d1e547d80efu&mid=0&og=hw&nbs=1&uipk=5&oi=0x240882100c0338a114bedf96e76c9e5b&upsig=b0dcd602fa3a22640be625ad7c41d435&uparams=e,deadline,tag,gen,os,platform,trid,mid,og,nbs,uipk,oi&bvc=vod&nettype=0&bw=204186&dl=0&f=u_0_0&agrr=0&buvid=&build=0&orderid=0,3
+[2025-4-13 22:53:33] [INFO] downloadVideo: 下载成功！文件已保存到./BiliBiliDownload/
+[2025-4-13 22:57:46] [INFO] ZJTB: CLI初始化
+[2025-4-13 22:57:46] [INFO] getCid: 获取到了BV1YtXxYNEXA的cid：29015933821
+[2025-4-13 22:57:46] [INFO] getDownloadUrl: 成功获取到Url：https://upos-sz-mirror08c.bilivideo.com/upgcxcode/21/38/29015933821/29015933821-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&trid=58c83c9bddbd477fa9eb1216aa5db11u&os=08cbv&og=hw&deadline=1744563465&nbs=1&oi=0x240882100c0338a114bedf96e76c9e5b&platform=pc&mid=0&gen=playurlv3&tag=&uipk=5&upsig=8164ed06eadcc06807c27167bf89c670&uparams=e,trid,os,og,deadline,nbs,oi,platform,mid,gen,tag,uipk&bvc=vod&nettype=0&bw=204186&buvid=&build=0&dl=0&f=u_0_0&agrr=0&orderid=0,3
+[2025-4-13 22:57:46] [ERROR] downloadVideo: 下载失败：Error: ENOENT: no such file or directory, mkdir './BilibiliDownload/BV1YtXxYNEXA_1744556267050.mp4/'

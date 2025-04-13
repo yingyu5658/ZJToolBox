@@ -13,15 +13,13 @@
   "license": "MIT",
   "author": "yingyu5658",
   "type": "commonjs",
-  "main": "./NccOutput/index.js",
-  "bin": "./NccOutput/index.js",
-  "scripts": {
-    "build": "pkg .\\Nccoutput\\index.js --targets node18-win-x64 --out-path dist/"
-  },
+  "main": "./dist/index.js",
+  "bin": "./dist/index.js",
   "dependencies": {
     "@hizollo/osu-api": "^1.2.1",
     "@inquirer/prompts": "^7.4.0",
     "adm-zip": "^0.5.16",
+    "axios": "^1.8.4",
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.11.0",
     "clean-jsdoc-theme": "^4.3.0",
@@ -34,14 +32,17 @@
     "nvm": "^0.0.4",
     "osu-api-extended": "^3.0.20"
   },
+
+  "scripts": {
+    "pkg": "pkg . --out-path=build/"
+  },
   "pkg": {
     "scripts": "build/**/*.js",
-    "assets": "public/**/*",
-    "targets": [
-      "node18-win-x64"
-    ],
+    "assets": "views/**/*",
+    "targets": ["node18-win-x64"],  
     "outputPath": "dist"
   },
+
   "devDependencies": {
     "docdash": "^2.0.2",
     "jsdoc": "^4.0.4"

@@ -2,6 +2,7 @@ const fs = require("fs");
 const colors = require("../utils/Color.js");
 const log = require("../utils/GenerateLog.js")
 const beatmapUserInterface = require("../malody/beatmap/UserInterface.js");
+const BilibiliVideoDownload = require("../bilibili/UserInterface.js")
 const { Command } = require("commander");
 const root = new Command();
 
@@ -9,7 +10,7 @@ const INFO = "INFO"
 const WARN = "WARN"
 const ERROR = "ERROR"
 
-const VERSION = "1.0.3"
+const VERSION = "1.1.0"
 const VERSION_INFO = `ZJTB @${VERSION}`
 
 console.log(VERSION_INFO)
@@ -81,7 +82,22 @@ root.command("lbl")
   root.command("ts")
   .description("时间戳转换工具")
   
-  .option("--conversion, -c <timestamp>", "把时间戳转换为YYYY-MMMM-DD hh-mm的格式", (timestamp) => {log.log(INFO, "timeStampToTime", Utils.timeStampToTime(timestamp), true)})
+  .option("--conversion, -c <timestamp>", "把时间戳转换为YYYY-MMMM-DD hh-mm的格式", (timestamp) => {
+    let result = Utils.timeStampToTime(timestamp)
+    if (result == "ERROR") {
+      return -1
+    } else {
+    log.log(INFO, "timeStampToTime", result, true)
+    } 
+  })
+
+  root.command("bvd")
+  .description("B站视频解析下载")
+
+  .option("-d, --download <bvid>", "视频BV号（保留前面大写的BV）", (bvid) => {
+    let bvd = new BilibiliVideoDownload()
+    bvd.start(bvid)
+  })
   
 
 log.log("INFO", "ZJTB", "CLI初始化");

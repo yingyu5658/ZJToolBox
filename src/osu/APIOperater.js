@@ -21,11 +21,11 @@ const INFO = "INFO"
 const WARN = "WARN"
 const ERROR = "ERROR"
 
+         const a = 10
 
-
-
-
-
+      async function() {
+  console.log("fuck you！")
+}
 
 
 
