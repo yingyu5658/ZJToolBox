@@ -90,9 +90,45 @@ ZJTB @1.1.0
 [2025-4-13 23:3:4] [INFO] downloadVideo: 下载成功！文件已保存到./BiliBiliDownload/
 ```
 
+#### 批量下载
+
+用法：`zjtb bvd -b <BV号列表文件位置>`
+
+新建一个文本文件（建议与程序同级位置）
+
+填入BV号，一行一个
+```
+BV1pS421o7Gm
+BV1Hg411T7fT
+```
+
+输入`zjtb bvd -b ./bvid.txt`
+
+输出
+
+```
+[2025-4-18 23:36:10] [INFO] startBatch: 读取到了 1 个条目
+
+[2025-4-18 23:36:10] [INFO] startBatch: 读取到了 2 个条目
+
+[2025-4-18 23:36:10] [INFO] getCid: 获取到了BV1Hg411T7fT的cid：440816133
+
+[2025-4-18 23:36:10] [INFO] getCid: 获取到了BV1pS421o7Gm的cid：1612557621
+
+[2025-4-18 23:36:10] [INFO] getDownloadUrl: 成功获取到Url：https://xy118x184x254x111xy240ey5ay7820y1y1yy111xy.mcdn.bilivideo.cn:4483/upgcxcode/33/61/440816133/440816133_da2-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&nbs=1&mid=0&tag=&oi=0x240882100c01e7b179d6520dd8df5f02&uipk=5&platform=pc&gen=playurlv3&os=mcdn&og=cos&trid=0000b1eae2e65cd54af6930977613589cd3u&deadline=1744997772&upsig=f7ae10150ece72902dfcc12b6d557848&uparams=e,nbs,mid,tag,oi,uipk,platform,gen,os,og,trid,deadline&mcdnid=50009044&b0,3
+
+[2025-4-18 23:36:10] [INFO] getDownloadUrl: 成功获取到Url：https://cn-tj-cu-01-13.bilivideo.com/upgcxcode/21/76/1612557621/1612557621-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&platform=pc&trid=0000f9b6294bdeaa47cd9cfcdba4b869c68u&gen=playurlv3&os=bcache&og=hw&tag=&deadline=1744997772&nbs=1&oi=0x240882100c01e7b179d6520dd8df5f02&uipk=5&mid=0&upsig=1cc329cf895e4db81e513a32f394d5db&uparams=e,platform,trid,gen,os,og,tag,deadline,nbs,oi,uipk,mid&cdnid=87213&bvc=vod&nettype=0&bw=254868&agrr=0&buvid=&build=0&dl=0&f=u_0_0&orderid=0,3
+
+[2025-4-18 23:36:10] [INFO] downloadVideo: 下载任务已开始。文件将会保存到./BiliBiliDownloads
+
+[2025-4-18 23:36:10] [INFO] downloadVideo: 下载任务已开始。文件将会保存到./BiliBiliDownloads
+
+```
+
 ---
 
 ## 变更日志
+- 1.2.0 B站视频下载新增批量下载
 - 1.1.0 新增B站视频下载、时间戳小工具
 - 1.0.4 添加查看上次修改时间、难度、
 - 1.0.3 Malody功能新增查看难度、上次修改

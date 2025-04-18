@@ -5,15 +5,10 @@ const log = require("../utils/GenerateLog")
 const INFO = "INFO"
 const ERROR = "ERROR"
 
-
 // 配置默认请求头
 axios.defaults.headers.common["Referer"] = "https://www.bilibili.com";
 axios.defaults.headers.common["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
 
-
-/**
- *
- */
 class ParseVideo {
     static async getCid(bvid) {
         try {
@@ -23,7 +18,7 @@ class ParseVideo {
             log.log(INFO, "getCid", `获取到了${bvid}的cid：${cid}`, true)
             return cid
         } catch (error) {
-            log.log(ERROR, "getCid", `发生错误：${error}`, true)
+            log.log(ERROR, "getCid", `在处理 ${bvid} 时发生错误：${error}`, true)
             throw error
         }
     }
@@ -36,7 +31,7 @@ class ParseVideo {
             log.log(INFO, "getDownloadUrl", `成功获取到Url：${url}`, true)
             return url
         } catch (error) {
-            log.log(ERROR, "getDownloadUrl", `发生错误：${error}`, true)
+            log.log(ERROR, "getDownloadUrl", `在处理 ${cid}时 发生错误：${error}`, true)
             throw error
         }
     }
@@ -51,14 +46,20 @@ class ParseVideo {
             responseType: 'stream'
         }
         )
-        .then(response => {
-            const filename = `${bvid}_${Date.now()}.mp4`
-            fs.mkdirSync(`./BilibiliDownload/${filename}/`)
-            response.data.pipe(fs.createWriteStream(`./BilibiliDownload/${filename}/${filename}.mp4`))
-            log.log(INFO, "downloadVideo", "下载成功！文件已保存到./BiliBiliDownload/", true)
-        })
-        .catch (error => log.log(ERROR, "downloadVideo", `下载失败：${error}`, true))
-      return -1
+            .then(response => {
+                try {
+
+                const filename = `${bvid}_${Date.now()}.mp4`
+                fs.mkdirSync(`./BiliBiliDownloads/${filename}/`)
+                response.data.pipe(fs.createWriteStream(`./BiliBiliDownloads/${filename}/${filename}.mp4`))
+                } catch (error) {
+                    log.log(ERROR, "downloadVideo", `发生错误：${error}`, true)
+                    return -1
+                }
+                log.log(INFO, "downloadVideo", `下载任务已开始。文件将会保存到./BiliBiliDownloads`, true)
+            })
+            .catch(error => log.log(ERROR, "downloadVideo", `下载失败：${error}`, true))
+        return -1
     }
 }
 module.exports = ParseVideo
