@@ -10,8 +10,10 @@ const INFO = "INFO"
 const WARN = "WARN"
 const ERROR = "ERROR"
 
-const VERSION = "1.1.0"
-const VERSION_INFO = `ZJTB @${VERSION}`
+class CLI {
+constructor() {}
+
+init(VERSION, VERSION_INFO) {
 
 console.log(VERSION_INFO)
 
@@ -55,15 +57,7 @@ const Utils = require("../utils/Utils.js");
 // lbl子命令
 root.command("lbl")
 .description("卢布卢功能")
-  .option(
-    "--lbl",
-    "决定是否炉管",
-    () => {
-      lbl.luBuLu()
-    }
-  )
-
-  .option(
+ .option(
     "--coott",
     "自定义二选一",
     () => {
@@ -98,8 +92,11 @@ root.command("lbl")
     let bvd = new BilibiliVideoDownload()
     bvd.start(bvid)
   })
-  
-
 log.log("INFO", "ZJTB", "CLI初始化");
-
 root.parse(process.argv)
+}
+}
+
+module.exports = CLI
+
+

@@ -11,7 +11,9 @@ axios.defaults.headers.common["Referer"] = "https://www.bilibili.com";
 axios.defaults.headers.common["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36";
 
 
-
+/**
+ *
+ */
 class ParseVideo {
     static async getCid(bvid) {
         try {
@@ -56,7 +58,7 @@ class ParseVideo {
             log.log(INFO, "downloadVideo", "下载成功！文件已保存到./BiliBiliDownload/", true)
         })
         .catch (error => log.log(ERROR, "downloadVideo", `下载失败：${error}`, true))
-        return -1
+      return -1
     }
 }
 module.exports = ParseVideo

@@ -15,24 +15,6 @@ const { stdin, stdout } = require("process")
  */
 class Functions {
     /**
-     * 
-     * 生成随机数决定是否炉管
-     * 
-     * @function
-     * @returns true 卢
-     * @returns false 布卢
-     * @since 1.0.0
-     */
-    static luBuLu() {
-        let result = Math.round(Math.random())
-        if (result >= 0.5) {
-            console.log("疯狂的鹿，不停的蛇！！！")
-        } else {
-            console.log("别让欲望击穿你的意志。")
-        }
-    }
-
-    /**
      * 自定义二选一
      * 
      * @param {string} choice1 第一个选项
