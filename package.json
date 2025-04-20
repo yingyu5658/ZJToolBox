@@ -32,19 +32,20 @@
     "nvm": "^0.0.4",
     "osu-api-extended": "^3.0.20"
   },
-
-  "scripts": {
-    "pkg": "pkg . --out-path=build/"
-  },
+    "scripts": {
+    "build:win": "pkg ./index.js --targets=node18-win-x64 --out-path=dist --public --no-native-build"
+    },
   "pkg": {
-    "scripts": "build/**/*.js",
-    "assets": "views/**/*",
-    "targets": ["node18-win-x64"],  
-    "outputPath": "dist"
+    "scripts": "dist/**/*.js",
+    "assets": [
+      "views/**/*",
+      "node_modules/blessed/**/*.js",
+      "node_modules/blessed-contrib/**/*.js"
+    ]
   },
-
   "devDependencies": {
     "docdash": "^2.0.2",
-    "jsdoc": "^4.0.4"
+    "jsdoc": "^4.0.4",
+    "pkg": "^5.8.1"
   }
 }

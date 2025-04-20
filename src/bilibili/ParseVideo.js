@@ -12,7 +12,6 @@ axios.defaults.headers.common["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win
 class ParseVideo {
     static async getCid(bvid) {
         try {
-
             const response = await axios.get(`https://api.bilibili.com/x/web-interface/view?bvid=${bvid}`)
             let cid = response.data.data.pages[0].cid
             log.log(INFO, "getCid", `获取到了${bvid}的cid：${cid}`, true)

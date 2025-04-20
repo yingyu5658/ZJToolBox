@@ -9,9 +9,8 @@ const INFO = "[INFO] ";
 const WARN = "[WARN] ";
 const ERROR = "[ERROR] ";
 const logTime = `[${year}-${month}-${day} ${hour}:${minute}:${second}] `;
-const { colors } = require("blessed");
 const fs = require("fs");
-
+const colors = require("colors");
 const LogLevel = {
   INFO: "[INFO] ",
   WARN: "[WARN] ",
@@ -19,18 +18,55 @@ const LogLevel = {
 };
 
 class GenerateLog {
-  /*
-   * @param logTime 日志前缀时间戳
-   * */
-  static getLogTime() {
-    return logTime;
-  }
+    static writeLogToFile(logLevel, information) {
+        fs.appendFile("Log.log", information, "utf8", (err) => {
+            if(err) throw err
+            return
+        })}
+
+    static getLogTime() {
+        return logTime;
+    }
+
+    static info(serve, information, outputLogOnsole) {
+    const timestamp = this.getLogTime();
+    const prefix = INFO
+    const serveName = serve;
+    const fix = ": ";
+    const log = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
+    if(outputLogOnsole) console.log(colors.green(log));
+    GenerateLog.writeLogToFile(INFO, log)
+    }
+
+    static warn(serve, information, outputLogOnsole) {
+    const timestamp = this.getLogTime();
+    const prefix = WARN
+    const serveName = serve;
+    const fix = ": ";
+    const log = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
+
+    if(outputLogOnsole) console.log(colors.yellow(log));
+    GenerateLog.writeLogToFile(WARN, log)
+    }
+
+    static err(serve, information, outputLogOnsole) {
+    const timestamp = this.getLogTime();
+    const prefix = ERROR 
+    const serveName = serve;
+    const fix = ": ";
+    const log = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
+
+    if(outputLogOnsole) console.log(colors.red(log));
+    GenerateLog.writeLogToFile(WARN, log)
+    }
+
+    
 
   /*
    * @param logLevel 日志级别
    * @param log 日志内容
    */
-  static outputLog(logLevel, log) {
+  static outputLogSync(logLevel, log) {
     fs.appendFileSync("Log.log", log, "utf8", function (err) {
       console.error(err)
     });
@@ -47,13 +83,12 @@ class GenerateLog {
       console.error("日志级别错误", LogLevel[logLevel]);
       return -1;
     }
-
     const timestamp = this.getLogTime();
     const prefix = LogLevel[logLevel];
     const serveName = serve;
     const fix = ": ";
     const log = `${timestamp}${prefix}${serveName}${fix}${data}\n`;
-    this.outputLog(logLevel, log);
+    this.outputLogSync(logLevel, log);
 
     const colors = require("colors");
     // 判断是否输出到控制台
@@ -64,8 +99,8 @@ class GenerateLog {
       if (LogLevel[logLevel] === LogLevel.WARN) console.log(colors.yellow(log));
       if (LogLevel[logLevel] === LogLevel.ERROR) console.log(colors.red(log));
     }
-
     return log;
   }
 }
+
 module.exports = GenerateLog;

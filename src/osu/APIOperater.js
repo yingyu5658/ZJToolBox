@@ -1,7 +1,6 @@
 // const { Client } = require('@hizollo/osu-api')
 
 // // 初始化客户端
-// const osu = new Client({ apiKey: '383e6125e9120c5b447c2896799c1dba13678b17' });
 
 // // 获取玩家数据（通过用户名）
 // const user = await osu.users.getUser({ user: 'yingyu5658' });
