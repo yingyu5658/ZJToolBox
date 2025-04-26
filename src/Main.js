@@ -16,7 +16,7 @@ log.info("AD", "广告投放完成", false)
 
 
 const CLI = require("./user-interface/CLI.js")
-const VERSION = "1.2.0"
+const VERSION = "1.4.0"
 const VERSION_INFO = `ZJTB @${VERSION}`
 
 let cli = new CLI()
