@@ -17,59 +17,88 @@ const log = require('../../utils/GenerateLog.js');
  * @class
  */
 
+const MR_DATA = Buffer.from('mr data', 'utf8');
+const MR_FORMAT = Buffer.from('mr format', 'utf8');
+const md5EndOffset = 58;
+
 class ParseReplay {
-  static #getHead(path) {
-    const offset = 3;
-    try {
-      let head = fs.readFileSync(path, { encoding: 'latin1' });
-      if (head.includes('mr format head')) {
-        log.info('ParseReplay', '文件头校验成功', true);
-        return 0;
-      } else {
-        log.err('ParseReplay', '不是Malody回放文件', true);
-        return -1;
-      }
-    } catch (error) {
-      log.err('ParseReplay', `读取文件时发生错误：${error}`, true);
-      return -1;
-    }
+  constructor() {}
+
+  getStringLength(file, offset) {
+    return file.readUInt32LE(offset);
   }
 
-  static getReplayInfo(path) {
-    if (this.#getHead(path) !== 0) {
-      return -1;
-    }
-
-    let hex = fs.readFileSync('./20250121-215121-AiAe.mr');
-
-    const headTarget = Buffer.from([0x20, 0x00, 0x00, 0x00]); // 目标序列
-    let head = this.skipBlankChar(hex, headTarget);
-    log.info('getReplayInfo', `头部偏移量: ${head.offset}`, true);
-    log.info('getReplayInfo', `头部十六进制字符:  ${head.hex}`, true);
-
-    const endTarget = Buffer.from([0x0b, 0x00, 0x00, 0x00]);
-    let end = this.skipBlankChar(hex, endTarget);
-    log.info('getReplayInfo', `尾部偏移量: ${end.offset}`, true);
-    log.info('getReplayInfo', `尾部十六进制字符:  ${end.hex}`, true);
-
-    // TODO: 读取谱面难度信息
+  getDiff(file, length) {
+    const diff = file.toString(
+      'utf8',
+      md5EndOffset + 4,
+      md5EndOffset + 4 + length,
+    );
+    return { diff, newOffset: md5EndOffset + 4 + length };
   }
 
-  /*
-   * 读取MD5前后的空白字符，为了排除md5这个无用信息，直接读md5后面的难度信息
-   * 详见Malody回放文件的结构
-   */
-  static skipBlankChar(buffer, target) {
-    const postion = buffer.indexOf(target);
-    let start = postion;
-    let end = start + 4;
-    let result = buffer.slice(start, end);
-    let hex = result.toString('hex');
-    let info = {
-      offset: postion,
-      hex: hex,
-    };
-    return info;
+  getBeatmapName(file, offset, length) {
+    const beatmapName = file.toString('utf8', offset + 4, offset + 4 + length);
+    return { beatmapName, newOffset: offset + 4 + length };
+  }
+
+  getAuthor(file, offset, length) {
+    const author = file.toString('utf8', offset + 4, offset + 4 + length);
+    return { author, newOffset: offset + 4 + length };
+  }
+
+  getFinalScore(file, offset, length) {
+    const finalScore = file.readUInt32LE(offset);
+    return { finalScore, newOffset: offset + 4 };
+  }
+
+  getMaxCombo(file, offset, length) {
+    const maxCombo = file.readUInt32LE(offset);
+    return { maxCombo, newOffset: offset + 4 };
+  }
+
+  getBest(file, offset, length) {
+    const best = file.readUInt32LE(offset);
+    return { best, newOffset: offset + 4 };
+  }
+
+  getCool(file, offset, length) {
+    const cool = file.readUInt32LE(offset);
+    return { cool, newOffset: offset + 4 };
+  }
+
+  getGood(file, offset, length) {
+    const good = file.readUInt32LE(offset);
+    return { good, newOffset: offset + 4 };
+  }
+
+  getMiss(file, offset, length) {
+    const miss = file.readUInt32LE(offset);
+    return { miss, newOffset: offset + 12 };
+  }
+
+  // TODO: 写获取判定，0-4 abcde
+  getJudge(file, offset, length) {
+    let temp = file.readUInt32LE(offset);
+    let judge = '';
+    switch (temp) {
+      case 0:
+        judge = 'A';
+        break;
+      case 1:
+        judge = 'B';
+        break;
+      case 2:
+        judge = 'C';
+        break;
+      case 3:
+        judge = 'D';
+        break;
+      case 4:
+        judge = 'E';
+        break;
+    }
+    return { judge, newOffset: offset + 4 };
   }
 }
 

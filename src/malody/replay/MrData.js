@@ -1,12 +1,16 @@
-class BeatMapInfo {
+class MrData {
   constructor() {
     this.diff = '';
-    this.best = '';
-    this.cool = '';
-    this.good = '';
-    this.miss = '';
+    this.beatmapName = '';
+    this.author = '';
+    this.finalScore = 0;
+    this.maxCombo = 0;
+    this.best = 0;
+    this.cool = 0;
+    this.good = 0;
+    this.miss = 0;
     this.judge = '';
-    this.mod = '';
-    this.playTime = '';
   }
 }
+
+module.exports = MrData;

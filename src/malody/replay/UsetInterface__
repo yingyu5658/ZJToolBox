@@ -1,0 +1,56 @@
+const Mr = require('./ParseReplay.js');
+const fs = require('fs');
+const mr = new Mr();
+const MrData = require('./MrData.js');
+const mrData = new MrData();
+const INT32_LENGTH = 4;
+
+class UserInterface {
+  constructor() {}
+  getAllInfo(path) {
+    const file = fs.readFileSync(path);
+    const diffLength = mr.getStringLength(file, 58);
+    mrData.diff = mr.getDiff(file, diffLength);
+    const beatmapNameLength = mr.getStringLength(file, diff.newOffset);
+    mrData.beatmapName = mr.getBeatmapName(
+      file,
+      diff.newOffset,
+      beatmapNameLength,
+    );
+    const authorLength = mr.getStringLength(file, bn.newOffset);
+    mrData.author = mr.getAuthor(file, bn.newOffset, authorLength);
+    const finalScoreLength = INT32_LENGTH;
+    mrData.finalScore = mr.getFinalScore(
+      file,
+      author.newOffset,
+      finalScoreLength,
+    );
+    const maxComboLength = INT32_LENGTH;
+    mrData.maxCombo = mr.getMaxCombo(
+      file,
+      finalScore.newOffset,
+      maxComboLength,
+    );
+    const bestLength = INT32_LENGTH;
+    mrData.best = mr.getBest(file, maxCombo.newOffset, bestLength);
+    const coolLength = INT32_LENGTH;
+    mrData.cool = mr.getCool(file, best.newOffset, coolLength);
+    const goodLength = INT32_LENGTH;
+    mrData.good = mr.getGood(file, cool.newOffset, goodLength);
+    const missLength = INT32_LENGTH;
+    mrData.miss = mr.getMiss(file, good.newOffset, missLength);
+    const judgeLength = INT32_LENGTH;
+    mrData.judge = mr.getJudge(file, miss.newOffset, judgeLength);
+    console.log(mrData.diff);
+    console.log(mrData.beatmapName);
+    console.log(mrData.author);
+    console.log(mrData.finalScore);
+    console.log(mrData.maxCombo);
+    console.log(mrData.best);
+    console.log(mrData.cool);
+    console.log(mrData.good);
+    console.log(mrData.miss);
+    console.log(mrData.judge);
+  }
+}
+module.exports = UserInterface;

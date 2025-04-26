@@ -5,6 +5,8 @@ const beatmapUserInterface = require('../malody/beatmap/UserInterface.js');
 const BilibiliVideoDownload = require('../bilibili/UserInterface.js');
 const { Command } = require('commander');
 const root = new Command();
+const ReplayUserInterface = require('../malody/replay/UserInterface.js');
+const replayUserInterface = new ReplayUserInterface();
 
 const INFO = 'INFO';
 const WARN = 'WARN';
@@ -50,14 +52,18 @@ class CLI {
       .command('mld')
       .description('Malody功能')
       .option(
-        '-c, --check <filepath>',
-        '查看Malody谱面信息。注意：filepath是.mcz',
+        '-b, --beatmap <filepath>',
+        '查看Malody谱面信息。',
         (filePath) => {
           log.log('INFO', 'main', '执行查看谱面信息命令');
           beatmapUserInterface.main(filePath);
           return filePath;
         },
-      );
+      )
+      .option('-r, --replay <filePath>', '查看Malody回放信息。', (filePath) => {
+        let info = replayUserInterface.getAllInfo(filePath);
+        replayUserInterface.showAllInfo(info);
+      });
 
     const lbl = require('../lu-bu-lu/Functions.js');
     const { time, timeStamp } = require('console');
@@ -98,7 +104,7 @@ class CLI {
           if (result == 'ERROR') {
             return -1;
           } else {
-            log.log(INFO, 'timeStampToTime', result, true);
+            log.info('timeStampToTime', result, true);
           }
         },
       );
@@ -122,7 +128,7 @@ class CLI {
           batch.startBatch(filePath);
         },
       );
-    log.log('INFO', 'ZJTB', 'CLI初始化');
+    log.info('ZJTB', 'CLI初始化');
     root.parse(process.argv);
   }
 }
