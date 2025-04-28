@@ -35,3 +35,40 @@
 [2025-04-28 11:50:16] [INFO] getCid: [√] 获取到了BV1DtjAzUEb9的cid：29640101397
 [2025-04-28 11:50:16] [INFO] getDownloadUrl: [√] 成功获取到Url：https://xy111x177x19x20xy240ey95dy802y400yy6cxy.mcdn.bilivideo.cn:4483/upgcxcode/97/13/29640101397/29640101397-1-192.mp4?e=ig8euxZM2rNcNbRVhbdVhwdlhWdghwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&tag=&oi=0x240882100c01be21c9eabcf7d0c6c65c&trid=00005152ad81944d4c6284ffc919406488au&mid=0&deadline=1745819411&gen=playurlv3&os=mcdn&og=hw&nbs=1&uipk=5&platform=pc&upsig=a4080a7ef8d2ab41c43646b01fa386c5&uparams=e,tag,oi,trid,mid,deadline,gen,os,og,nbs,uipk,platform&mcdnid=50017738&bvc=vod&nettype=0&bw=816988&buvid=&build=0&dl=0&f=u_0_0&agrr=0&orderid=0,3
 [2025-04-28 11:50:16] [INFO] downloadVideo: [✓] 下载任务已完成，文件保存至：BiliBiliDownloads/BV1DtjAzUEb9_1745812216685.mp4
+[2025-04-28 12:00:09] [INFO] Main: 程序执行完毕
+[2025-04-28 12:00:09] [INFO] AD: 广告投放完成
+[2025-04-28 12:00:09] [INFO] ZJTB: CLI初始化
+[2025-04-28 12:00:09] [ERROR] getCid: [×] 在处理 /BV1ni4y1d7Ti 时发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-04-28 12:00:09] [ERROR] BilibiliVideoDownload:  发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-04-28 12:00:15] [INFO] Main: 程序执行完毕
+[2025-04-28 12:00:15] [INFO] AD: 广告投放完成
+[2025-04-28 12:00:15] [INFO] ZJTB: CLI初始化
+[2025-04-28 12:00:15] [INFO] getCid: [√] 获取到了BV1ni4y1d7Ti的cid：459761372
+[2025-04-28 12:00:15] [INFO] getDownloadUrl: [√] 成功获取到Url：https://upos-sz-estgoss.bilivideo.com/upgcxcode/72/13/459761372/459761372_nb2-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&tag=&og=cos&oi=0x240882100c01be21c9eabcf7d0c6c65c&trid=b5466847cabf46fbb8cbb7833b2e882u&deadline=1745820010&uipk=5&gen=playurlv3&os=upos&platform=pc&mid=0&nbs=1&upsig=3ab167a8a3733eb7121750b7563e6e33&uparams=e,tag,og,oi,trid,deadline,uipk,gen,os,platform,mid,nbs&bvc=vod&nettype=0&bw=298925&dl=0&f=u_0_0&agrr=0&buvid=&build=0&orderid=0,3
+[2025-04-28 12:00:15] [INFO] getDownloadUrl: 下载任务已开始
+[2025-04-28 12:00:15] [INFO] downloadVideo: [✓] 下载任务已完成，文件保存至：BiliBiliDownloads/BV1ni4y1d7Ti_1745812815570.mp4
+[2025-04-28 17:20:09] [INFO] Main: 程序执行完毕
+[2025-04-28 17:20:09] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:20:14] [INFO] Main: 程序执行完毕
+[2025-04-28 17:20:14] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:20:43] [INFO] Main: 程序执行完毕
+[2025-04-28 17:20:43] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:20:43] [INFO] getCid: [√] 获取到了BV1ewwxesEu4的cid：25747527263
+[2025-04-28 17:20:43] [INFO] getDownloadUrl: [√] 成功获取到Url：https://xy116x207x155x163xy240ey95dy1010y700yy8dxy.mcdn.bilivideo.cn:4483/upgcxcode/63/72/25747527263/25747527263-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&trid=0000b735eae6ed84453cab110454939a322u&mid=0&gen=playurlv3&og=cos&nbs=1&oi=0x240882100c01be21c9eabcf7d0c6c65c&deadline=1745839243&tag=&os=mcdn&uipk=5&platform=pc&upsig=d585ad74776a400bbcb18111a074ee19&uparams=e,trid,mid,gen,og,nbs,oi,deadline,tag,os,uipk,platform&mcdnid=50017696&bvc=vod&nettype=0&bw=774621&buvid=&build=0&dl=0&f=u_0_0&agrr=1&orderid=0,3
+[2025-04-28 17:20:43] [INFO] getDownloadUrl: 下载任务已开始
+[2025-04-28 17:20:43] [INFO] downloadVideo: [✓] 下载任务已完成，文件保存至：BiliBiliDownloads/BV1ewwxesEu4_1745832043822.mp4
+[2025-04-28 17:21:14] [INFO] Main: 程序执行完毕
+[2025-04-28 17:21:14] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:21:16] [INFO] Main: 程序执行完毕
+[2025-04-28 17:21:16] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:22:13] [INFO] Main: 程序执行完毕
+[2025-04-28 17:22:13] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:22:13] [INFO] AD: 广告投放完成
+[2025-04-28 17:22:14] [INFO] Main: 程序执行完毕
+[2025-04-28 17:22:14] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:22:14] [INFO] AD: 广告投放完成
+[2025-04-28 17:22:17] [INFO] Main: 程序执行完毕
+[2025-04-28 17:22:17] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:22:20] [INFO] Main: 程序执行完毕
+[2025-04-28 17:22:20] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:22:20] [INFO] AD: 广告投放完成

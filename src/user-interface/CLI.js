@@ -25,6 +25,7 @@ class CLI {
       )
       .option('-a, --about', '关于')
       .option('-l, --log', '查看日志')
+      .option('--noad', '禁用广告显示')
 
       .action((options) => {
         if (options.about) {
@@ -34,6 +35,10 @@ class CLI {
           console.log('└── Language: Javascript ');
           console.log('作者博客：https://www.yingyu5658.me/');
         }
+
+        if (options.noad) CLI.showAD(false);
+
+        if (!options.noad) CLI.showAD(true);
 
         if (options.log) {
           let log = fs.readFileSync(
@@ -130,6 +135,24 @@ class CLI {
       );
     log.info('ZJTB', 'CLI初始化');
     root.parse(process.argv);
+  }
+
+  static showAD(isShow) {
+    if (isShow === false) return;
+    console.log(
+      `
+|============================|
+|            广告            |
+|----------------------------|
+|    加入醉酒哈基米谢谢喵    |
+|         591067249          |
+|----------------------------|
+|访问yingyu5658的万事屋谢谢喵|
+| https://www.yingyu5658.me  |
+|============================|
+`,
+    );
+    log.info('AD', '广告投放完成', false);
   }
 }
 
