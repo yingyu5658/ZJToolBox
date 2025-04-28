@@ -12,11 +12,15 @@ class UserInterface {
   getAllInfo(path) {
     try {
       const file = fs.readFileSync(path);
+      log.info('getAllInfo', `回放文件路径：${path}`);
       const diffLength = mr.getStringLength(file, 58);
+      log.info('getAllInfo', `diffLength: ${diffLength}`);
       const diff = mr.getDiff(file, diffLength);
       const beatmapNameLength = mr.getStringLength(file, diff.newOffset);
+      log.info('getAllInfo', `diff.newOffset: ${diff.newOffset}`);
       const bn = mr.getBeatmapName(file, diff.newOffset, beatmapNameLength);
       const authorLength = mr.getStringLength(file, bn.newOffset);
+      log.info('getAllInfo', `authorLength: ${authorLength}`);
       const finalScoreLength = INT32_LENGTH;
       const maxComboLength = INT32_LENGTH;
       const bestLength = INT32_LENGTH;
@@ -60,8 +64,7 @@ class UserInterface {
   showAllInfo(data) {
     let judgeColor = '';
 
-    console.log(
-      `
+    console.log(`===回放信息===
 ${colors.cyan('谱面名称')}: ${data.beatmapName}
 ${colors.cyan('谱面难度')}: ${data.diff}
 ${colors.cyan('谱面作者')}: ${data.author}
@@ -70,8 +73,7 @@ ${colors.cyan('最大连击')}: ${data.maxCombo}
 ${colors.red('B E S T ')}: ${data.best}
 ${colors.yellow('C O O L ')}: ${data.cool}
 ${colors.green('G O O D ')}: ${data.good}
-${colors.gray('M I S S ')}: ${data.miss}`,
-    );
+${colors.gray('M I S S ')}: ${data.miss}`);
     switch (data.judge) {
       case 'A':
         console.log(

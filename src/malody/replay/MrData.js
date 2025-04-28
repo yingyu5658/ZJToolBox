@@ -1,8 +1,8 @@
 class MrData {
   constructor() {
-    this.diff = '';
-    this.beatmapName = '';
-    this.author = '';
+    this.diff = '未知';
+    this.beatmapName = '未知';
+    this.author = '未知';
     this.finalScore = 0;
     this.maxCombo = 0;
     this.best = 0;
