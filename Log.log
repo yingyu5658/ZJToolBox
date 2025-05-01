@@ -72,3 +72,21 @@
 [2025-04-28 17:22:20] [INFO] Main: 程序执行完毕
 [2025-04-28 17:22:20] [INFO] ZJTB: CLI初始化
 [2025-04-28 17:22:20] [INFO] AD: 广告投放完成
+[2025-04-28 17:36:14] [INFO] Main: 程序执行完毕
+[2025-04-28 17:36:14] [INFO] ZJTB: CLI初始化
+[2025-04-28 17:36:14] [INFO] getAllInfo: 回放文件路径：./20240815-135838-Malody 4K Extra Dan v3-Jack.mr
+[2025-04-28 17:36:14] [INFO] getAllInfo: diffLength: 27
+[2025-04-28 17:36:14] [INFO] getAllInfo: diff.newOffset: 89
+[2025-04-28 17:36:14] [INFO] getAllInfo: authorLength: 15
+[2025-04-29 12:41:44] [INFO] Main: 程序执行完毕
+[2025-04-29 12:41:44] [INFO] ZJTB: CLI初始化
+[2025-04-29 12:41:44] [INFO] AD: 广告投放完成
+[2025-04-29 12:43:24] [INFO] main: 执行查看谱面信息命令
+[2025-04-29 12:43:24] [INFO] Main: 程序执行完毕
+[2025-04-29 12:43:24] [INFO] ZJTB: CLI初始化
+[2025-04-29 12:43:24] [INFO] traverseTempDir: 找到谱面: temp/0/1695462196.mc
+[2025-04-29 12:43:24] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-04-29 12:43:24] [INFO] delTempDir: 删除临时目录成功！
+[2025-04-29 12:43:50] [INFO] Main: 程序执行完毕
+[2025-04-29 12:43:50] [INFO] ZJTB: CLI初始化
+[2025-04-29 12:43:50] [INFO] AD: 广告投放完成

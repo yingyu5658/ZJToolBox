@@ -24544,6 +24544,7 @@ class CLI {
       )
       .option('-a, --about', '关于')
       .option('-l, --log', '查看日志')
+      .option('--noad', '禁用广告显示')
 
       .action((options) => {
         if (options.about) {
@@ -24553,6 +24554,10 @@ class CLI {
           console.log('└── Language: Javascript ');
           console.log('作者博客：https://www.yingyu5658.me/');
         }
+
+        if (options.noad) CLI.showAD(false);
+
+        if (!options.noad) CLI.showAD(true);
 
         if (options.log) {
           let log = fs.readFileSync(
@@ -24649,6 +24654,24 @@ class CLI {
       );
     log.info('ZJTB', 'CLI初始化');
     root.parse(process.argv);
+  }
+
+  static showAD(isShow) {
+    if (isShow === false) return;
+    console.log(
+      `
+|============================|
+|            广告            |
+|----------------------------|
+|    加入醉酒哈基米谢谢喵    |
+|         591067249          |
+|----------------------------|
+|访问yingyu5658的万事屋谢谢喵|
+| https://www.yingyu5658.me  |
+|============================|
+`,
+    );
+    log.info('AD', '广告投放完成', false);
   }
 }
 
@@ -29757,30 +29780,15 @@ module.exports = /*#__PURE__*/JSON.parse('{"application/1d-interleaved-parityfec
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-const log = __nccwpck_require__(765)
-console.log(
-`
-|============================|
-|            广告            |
-|----------------------------|
-|    加入醉酒哈基米谢谢喵    |
-|         591067249          |
-|----------------------------|
-|访问yingyu5658的万事屋谢谢喵|
-| https://www.yingyu5658.me  |
-|============================|
-`
-)
-log.info("AD", "广告投放完成", false)
+const log = __nccwpck_require__(765);
 
+const CLI = __nccwpck_require__(9302);
+const VERSION = '1.4.0';
+const VERSION_INFO = `ZJTB @${VERSION}`;
 
-const CLI = __nccwpck_require__(9302)
-const VERSION = "1.4.0"
-const VERSION_INFO = `ZJTB @${VERSION}`
-
-let cli = new CLI()
-cli.init(VERSION, VERSION_INFO)
-log.log("INFO", "Main", "程序执行完毕")
+let cli = new CLI();
+cli.init(VERSION, VERSION_INFO);
+log.log('INFO', 'Main', '程序执行完毕');
 
 module.exports = __webpack_exports__;
 /******/ })()
