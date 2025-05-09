@@ -58,7 +58,6 @@ class Functions {
       output: process.stdout,
     });
     const question = promisify(rl.question).bind(rl);
-
     const choiceList = [];
 
     for (let n = 0; n < choiceNum; n++) {

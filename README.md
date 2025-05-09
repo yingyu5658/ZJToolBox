@@ -189,8 +189,6 @@ BV1Hg411T7fT
 
 ## 友情链接
 
-> [开发文档](http://zjhajimi.fun/ZJToolBox/docs/module-Beatmap-BeatmapData.html)
->
 > [醉酒哈基米QQ群](https://qm.qq.com/q/TOkvfQIUIU) 
 >
 > [醉酒哈基米官网](www.zjhajimi.fun)

@@ -33,7 +33,7 @@ class ParseVideo {
       );
       let url = response.data.data.durl[0].url;
       log.log(INFO, 'getDownloadUrl', `[√] 成功获取到Url：${url}`, true);
-      log.info("getDownloadUrl", "下载任务已开始", true)
+      log.info('getDownloadUrl', '下载任务已开始', true);
       return url;
     } catch (error) {
       log.log(
@@ -47,7 +47,6 @@ class ParseVideo {
   }
 
   static async downloadVideo(bvid, url) {
-
     const referer = `https://www.bilibili.com/video/${bvid}`;
     try {
       const response = await axios({
@@ -55,9 +54,10 @@ class ParseVideo {
         url: url,
         headers: {
           Referer: referer,
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
         },
-        responseType: 'stream'
+        responseType: 'stream',
       });
 
       const filename = `${bvid}_${Date.now()}.mp4`;
@@ -77,7 +77,12 @@ class ParseVideo {
         response.data.pipe(writer);
 
         writer.on('finish', () => {
-          log.log(INFO, 'downloadVideo', `[✓] 下载任务已完成，文件保存至：${filePath}`, true);
+          log.log(
+            INFO,
+            'downloadVideo',
+            `[✓] 下载任务已完成，文件保存至：${filePath}`,
+            true,
+          );
           resolve();
         });
 
@@ -91,42 +96,10 @@ class ParseVideo {
           reject(error);
         });
       });
-
     } catch (error) {
       log.log(ERROR, 'downloadVideo', `[×] 下载失败：${error}`, true);
       throw error;
     }
-
-    // const referer = `https://www.bilibili.com/video/${bvid}`;
-    // axios
-    //   .get(url, {
-    //     headers: {
-    //       Referer: referer,
-    //       'User-Agent':
-    //         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
-    //     },
-    //     responseType: 'stream',
-    //   })
-    //   .then((response) => {
-    //     try {
-    //       const filename = `${bvid}_${Date.now()}.mp4`;
-    //       fs.mkdirSync(`./BiliBiliDownloads/${filename}/`);
-    //       response.data.pipe(
-    //         fs.createWriteStream(
-    //           `./BiliBiliDownloads/${filename}/${filename}.mp4`,
-    //         ),
-    //       );
-    //     } catch (error) {
-    //       log.log(ERROR, 'downloadVideo', `发生错误：${error}`, true);
-    //       return -1;
-    //     }
-    //     log.log(INFO, 'downloadVideo', `[↓] 下载任务已开始。文件将会保存到./BiliBiliDownloads`, true,);
-    //     log.info("downloadVideo", "下载任务已完成", true)
-    //   })
-    //   .catch((error) =>
-    //     log.log(ERROR, 'downloadVideo', `[×] 下载失败：${error}`, true),
-    //   );
-    // return -1;
   }
 }
 module.exports = ParseVideo;
