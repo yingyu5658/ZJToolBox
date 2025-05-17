@@ -92,7 +92,6 @@ class GenerateLog {
     let log = `${timestamp}${prefix}${serveName}${fix}${data}\n`;
     this.outputLogSync(logLevel, log);
 
-    const colors = require('colors');
     // 判断是否输出到控制台
     if (!outputLogOnsole) {
       return;

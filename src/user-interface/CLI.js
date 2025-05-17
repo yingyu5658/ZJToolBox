@@ -67,7 +67,7 @@ class CLI {
       )
       .option('-r, --replay <filePath>', '查看Malody回放信息。', (filePath) => {
         let info = replayUserInterface.getAllInfo(filePath);
-        replayUserInterface.showAllInfo(info);
+        replayUserInterface.showAllInfo(info, filePath);
       });
 
     const lbl = require('../lu-bu-lu/Functions.js');

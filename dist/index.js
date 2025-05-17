@@ -23637,26 +23637,18 @@ class ParseVideo {
 
   static async getDownloadUrl(bvid, cid) {
     try {
-      const response = await axios.get(
-        `https://api.bilibili.com/x/player/playurl?bvid=${bvid}&cid=${cid}&qn=80`,
-      );
+      const response = await axios.get(`https://api.bilibili.com/x/player/playurl?bvid=${bvid}&cid=${cid}&qn=80`);
       let url = response.data.data.durl[0].url;
       log.log(INFO, 'getDownloadUrl', `[√] 成功获取到Url：${url}`, true);
-      log.info("getDownloadUrl", "下载任务已开始", true)
+      log.info('getDownloadUrl', '下载任务已开始', true);
       return url;
     } catch (error) {
-      log.log(
-        ERROR,
-        'getDownloadUrl',
-        `[×] 在处理 ${cid}时 发生错误：${error}`,
-        true,
-      );
+      log.log(ERROR,'getDownloadUrl',`[×] 在处理 ${cid}时 发生错误：${error}`,true);
       throw error;
     }
   }
 
   static async downloadVideo(bvid, url) {
-
     const referer = `https://www.bilibili.com/video/${bvid}`;
     try {
       const response = await axios({
@@ -23664,9 +23656,10 @@ class ParseVideo {
         url: url,
         headers: {
           Referer: referer,
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
+          'User-Agent':
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
         },
-        responseType: 'stream'
+        responseType: 'stream',
       });
 
       const filename = `${bvid}_${Date.now()}.mp4`;
@@ -23686,7 +23679,12 @@ class ParseVideo {
         response.data.pipe(writer);
 
         writer.on('finish', () => {
-          log.log(INFO, 'downloadVideo', `[✓] 下载任务已完成，文件保存至：${filePath}`, true);
+          log.log(
+            INFO,
+            'downloadVideo',
+            `[✓] 下载任务已完成，文件保存至：${filePath}`,
+            true,
+          );
           resolve();
         });
 
@@ -23700,46 +23698,13 @@ class ParseVideo {
           reject(error);
         });
       });
-
     } catch (error) {
       log.log(ERROR, 'downloadVideo', `[×] 下载失败：${error}`, true);
       throw error;
     }
-
-    // const referer = `https://www.bilibili.com/video/${bvid}`;
-    // axios
-    //   .get(url, {
-    //     headers: {
-    //       Referer: referer,
-    //       'User-Agent':
-    //         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36...',
-    //     },
-    //     responseType: 'stream',
-    //   })
-    //   .then((response) => {
-    //     try {
-    //       const filename = `${bvid}_${Date.now()}.mp4`;
-    //       fs.mkdirSync(`./BiliBiliDownloads/${filename}/`);
-    //       response.data.pipe(
-    //         fs.createWriteStream(
-    //           `./BiliBiliDownloads/${filename}/${filename}.mp4`,
-    //         ),
-    //       );
-    //     } catch (error) {
-    //       log.log(ERROR, 'downloadVideo', `发生错误：${error}`, true);
-    //       return -1;
-    //     }
-    //     log.log(INFO, 'downloadVideo', `[↓] 下载任务已开始。文件将会保存到./BiliBiliDownloads`, true,);
-    //     log.info("downloadVideo", "下载任务已完成", true)
-    //   })
-    //   .catch((error) =>
-    //     log.log(ERROR, 'downloadVideo', `[×] 下载失败：${error}`, true),
-    //   );
-    // return -1;
   }
 }
 module.exports = ParseVideo;
-
 
 /***/ }),
 
@@ -23747,50 +23712,48 @@ module.exports = ParseVideo;
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const ParseVideo = __nccwpck_require__(5371);
-const log = __nccwpck_require__(765)
-const INFO = "INFO"
-const WARN = "WARN"
-const ERROR = "ERROR"
+const log = __nccwpck_require__(765);
+const INFO = 'INFO';
+const WARN = 'WARN';
+const ERROR = 'ERROR';
 class UserInterface {
-    constructor() { }
+  constructor() {}
 
-    async start(bvid) {
-        try {
-            const cid = await ParseVideo.getCid(bvid);
-            const url = await ParseVideo.getDownloadUrl(bvid, cid);
-            await ParseVideo.downloadVideo(bvid, url)
-            return url
-        } catch (error) {
-            log.log("ERROR", "BilibiliVideoDownload", ` 发生错误：${error}`, true)
-        }
+  async start(bvid) {
+    try {
+      const cid = await ParseVideo.getCid(bvid);
+      const url = await ParseVideo.getDownloadUrl(bvid, cid);
+      await ParseVideo.downloadVideo(bvid, url);
+      return url;
+    } catch (error) {
+      log.log('ERROR', 'BilibiliVideoDownload', ` 发生错误：${error}`, true);
     }
+  }
 
-
-    async startBatch(filePath) {
-        // let downloadList = []
-        let n = 0
-        try {
-            const readline = __nccwpck_require__(3785)
-            const fs = __nccwpck_require__(9896)
-            const rl = readline.createInterface({
-                input: fs.createReadStream(filePath),
-                output: process.stdout,
-                terminal: false
-            })
-            rl.on('line', (line) => {
-                this.start(line)
-                n++
-                // downloadList.push(line)
-                log.log(INFO, "startBatch", `读取到了 ${n} 个条目`, true)
-            })
-        }
-        catch (error) {
-            log.log("ERROR", "startBatch", `发生错误：${error}`, true)
-            return -1
-        }
+  async startBatch(filePath) {
+    // let downloadList = []
+    let n = 0;
+    try {
+      const readline = __nccwpck_require__(3785);
+      const fs = __nccwpck_require__(9896);
+      const rl = readline.createInterface({
+        input: fs.createReadStream(filePath),
+        output: process.stdout,
+        terminal: false,
+      });
+      rl.on('line', (line) => {
+        this.start(line);
+        n++;
+        // downloadList.push(line)
+        log.log(INFO, 'startBatch', `读取到了 ${n} 个条目`, true);
+      });
+    } catch (error) {
+      log.log('ERROR', 'startBatch', `发生错误：${error}`, true);
+      return -1;
     }
+  }
 }
-module.exports = UserInterface
+module.exports = UserInterface;
 
 
 /***/ }),
@@ -23858,7 +23821,6 @@ class Functions {
       output: process.stdout,
     });
     const question = promisify(rl.question).bind(rl);
-
     const choiceList = [];
 
     for (let n = 0; n < choiceNum; n++) {
@@ -24808,7 +24770,6 @@ class GenerateLog {
     let log = `${timestamp}${prefix}${serveName}${fix}${data}\n`;
     this.outputLogSync(logLevel, log);
 
-    const colors = __nccwpck_require__(126);
     // 判断是否输出到控制台
     if (!outputLogOnsole) {
       return;
@@ -29789,7 +29750,6 @@ const VERSION_INFO = `ZJTB @${VERSION}`;
 let cli = new CLI();
 cli.init(VERSION, VERSION_INFO);
 log.log('INFO', 'Main', '程序执行完毕');
-
 module.exports = __webpack_exports__;
 /******/ })()
 ;

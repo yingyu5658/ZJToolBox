@@ -9,7 +9,8 @@ class MrData {
     this.cool = 0;
     this.good = 0;
     this.miss = 0;
-    this.judge = '';
+    this.judge = '未知';
+    this.md5 = '未知';
   }
 }
 

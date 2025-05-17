@@ -28,20 +28,13 @@ class ParseVideo {
 
   static async getDownloadUrl(bvid, cid) {
     try {
-      const response = await axios.get(
-        `https://api.bilibili.com/x/player/playurl?bvid=${bvid}&cid=${cid}&qn=80`,
-      );
+      const response = await axios.get(`https://api.bilibili.com/x/player/playurl?bvid=${bvid}&cid=${cid}&qn=80`);
       let url = response.data.data.durl[0].url;
       log.log(INFO, 'getDownloadUrl', `[√] 成功获取到Url：${url}`, true);
       log.info('getDownloadUrl', '下载任务已开始', true);
       return url;
     } catch (error) {
-      log.log(
-        ERROR,
-        'getDownloadUrl',
-        `[×] 在处理 ${cid}时 发生错误：${error}`,
-        true,
-      );
+      log.log(ERROR,'getDownloadUrl',`[×] 在处理 ${cid}时 发生错误：${error}`,true);
       throw error;
     }
   }

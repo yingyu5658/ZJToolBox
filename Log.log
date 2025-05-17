@@ -94,3 +94,211 @@
 [2025-05-05 19:40:48] [INFO] ZJTB: CLI初始化
 [2025-05-05 19:41:08] [INFO] Main: 程序执行完毕
 [2025-05-05 19:41:08] [INFO] ZJTB: CLI初始化
+[2025-05-10 19:32:08] [INFO] Main: 程序执行完毕
+[2025-05-10 19:32:08] [INFO] ZJTB: CLI初始化
+[2025-05-10 19:33:57] [INFO] Main: 程序执行完毕
+[2025-05-10 19:33:57] [INFO] ZJTB: CLI初始化
+[2025-05-10 20:54:07] [INFO] Main: 程序执行完毕
+[2025-05-10 20:54:07] [INFO] ZJTB: CLI初始化
+[2025-05-10 20:54:07] [INFO] getAllInfo: 回放文件路径：dropdead(1).mcz
+[2025-05-10 20:54:07] [INFO] getAllInfo: diffLength: 209961440
+[2025-05-10 20:54:07] [ERROR] getAllInfo: 发生错误：RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 2911201. Received 209961502
+[2025-05-10 20:54:16] [INFO] main: 执行查看谱面信息命令
+[2025-05-10 20:54:16] [INFO] Main: 程序执行完毕
+[2025-05-10 20:54:16] [INFO] ZJTB: CLI初始化
+[2025-05-10 20:54:16] [INFO] traverseTempDir: 找到谱面: temp/1746874979.mc
+[2025-05-10 20:54:16] [INFO] getBeatmapFileData: 谱面解析成功！
+[2025-05-10 20:54:16] [INFO] delTempDir: 删除临时目录成功！
+[2025-05-10 22:40:59] [INFO] Main: 程序执行完毕
+[2025-05-10 22:40:59] [INFO] ZJTB: CLI初始化
+[2025-05-13 20:32:20] [INFO] Main: 程序执行完毕
+[2025-05-13 20:32:20] [INFO] ZJTB: CLI初始化
+[2025-05-13 20:32:20] [INFO] AD: 广告投放完成
+[2025-05-13 20:32:37] [INFO] Main: 程序执行完毕
+[2025-05-13 20:32:37] [INFO] ZJTB: CLI初始化
+[2025-05-13 20:32:37] [INFO] getCid: [√] 获取到了BV1xQ4y1n7dA的cid：1322365489
+[2025-05-13 20:32:37] [INFO] getDownloadUrl: [√] 成功获取到Url：https://xy118x184x254x2xy240ey5ay7820y1y1yy2xy.mcdn.bilivideo.cn:4483/upgcxcode/89/54/1322365489/1322365489-1-192.mp4?e=ig8euxZM2rNcNbNMhbdVhwdlhbKghwdVhoNvNC8BqJIzNbfqXBvEqxTEto8BTrNvN0GvT90W5JZMkX_YN0MvXg8gNEV4NC8xNEV4N03eN0B5tZlqNxTEto8BTrNvNeZVuJ10Kj_g2UB02J0mN0B5tZlqNCNEto8BTrNvNC7MTX502C8f2jmMQJ6mqF2fka1mqx6gqj0eN0B599M=&os=mcdn&mid=0&deadline=1747146757&tag=&nbs=1&uipk=5&platform=pc&oi=0x240882100c0189410000000000000d2c&trid=0000148c2b5263604da5b3fa9b48c8cc680u&gen=playurlv3&og=cos&upsig=26a71471b4e258eeaaf0d9357de57c94&uparams=e,os,mid,deadline,tag,nbs,uipk,platform,oi,trid,gen,og&mcdnid=50021693&bvc=vod&nettype=0&bw=1945476&agrr=0&buvid=&build=0&dl=0&f=u_0_0&orderid=0,3
+[2025-05-13 20:32:37] [INFO] getDownloadUrl: 下载任务已开始
+[2025-05-13 20:32:37] [INFO] downloadVideo: [✓] 下载任务已完成，文件保存至：BiliBiliDownloads/BV1xQ4y1n7dA_1747139557790.mp4
+[2025-05-17 18:33:14] [INFO] Main: 程序执行完毕
+[2025-05-17 18:33:14] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:33:14] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:33:14] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:33:14] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:33:14] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:35:44] [INFO] Main: 程序执行完毕
+[2025-05-17 18:35:44] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:35:44] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:35:44] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:35:44] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:35:44] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:37:10] [INFO] Main: 程序执行完毕
+[2025-05-17 18:37:10] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:37:10] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:37:10] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:37:10] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:37:10] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:39:23] [INFO] Main: 程序执行完毕
+[2025-05-17 18:39:23] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:39:23] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:39:23] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:39:23] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:39:23] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:39:59] [INFO] Main: 程序执行完毕
+[2025-05-17 18:39:59] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:39:59] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:39:59] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:39:59] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:39:59] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:40:26] [INFO] Main: 程序执行完毕
+[2025-05-17 18:40:26] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:40:26] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:40:26] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:40:26] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:40:26] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:40:39] [INFO] Main: 程序执行完毕
+[2025-05-17 18:40:39] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:40:39] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:40:39] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:40:39] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:40:39] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:40:45] [INFO] Main: 程序执行完毕
+[2025-05-17 18:40:45] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:40:45] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:40:45] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:40:45] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:40:45] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:41:07] [INFO] Main: 程序执行完毕
+[2025-05-17 18:41:07] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:41:07] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:41:07] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:41:07] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:41:07] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:41:19] [INFO] Main: 程序执行完毕
+[2025-05-17 18:41:19] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:41:19] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:41:19] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:41:19] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:41:19] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:41:32] [INFO] Main: 程序执行完毕
+[2025-05-17 18:41:32] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:41:32] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:41:32] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:41:32] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:41:32] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:43:24] [INFO] Main: 程序执行完毕
+[2025-05-17 18:43:24] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:43:24] [INFO] getAllInfo: 回放文件路径：./20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:43:24] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:43:24] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:43:24] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:47:18] [INFO] Main: 程序执行完毕
+[2025-05-17 18:47:18] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:47:18] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:47:18] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:47:18] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:47:18] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:47:39] [INFO] Main: 程序执行完毕
+[2025-05-17 18:47:39] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:47:39] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:47:39] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:47:39] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:47:39] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:49:38] [INFO] Main: 程序执行完毕
+[2025-05-17 18:49:38] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:49:38] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:49:38] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:49:38] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:49:38] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:49:50] [INFO] Main: 程序执行完毕
+[2025-05-17 18:49:50] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:49:50] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:49:50] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:49:50] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:49:50] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:50:10] [INFO] Main: 程序执行完毕
+[2025-05-17 18:50:10] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:50:10] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:50:10] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:50:10] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:50:10] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:50:43] [INFO] Main: 程序执行完毕
+[2025-05-17 18:50:43] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:50:43] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:50:43] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:50:43] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:50:43] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:51:30] [INFO] Main: 程序执行完毕
+[2025-05-17 18:51:30] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:51:30] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:51:30] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:51:30] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:51:30] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:51:49] [INFO] Main: 程序执行完毕
+[2025-05-17 18:51:49] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:51:49] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:51:49] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:51:49] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:51:49] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:52:01] [INFO] Main: 程序执行完毕
+[2025-05-17 18:52:01] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:52:01] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:52:01] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:52:01] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:52:01] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:52:58] [INFO] Main: 程序执行完毕
+[2025-05-17 18:52:58] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:52:58] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:52:58] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:52:58] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:52:58] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:53:22] [INFO] Main: 程序执行完毕
+[2025-05-17 18:53:22] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:53:22] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:53:22] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:53:22] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:53:22] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 18:54:11] [INFO] Main: 程序执行完毕
+[2025-05-17 18:54:11] [INFO] ZJTB: CLI初始化
+[2025-05-17 18:54:11] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 18:54:11] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 18:54:11] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 18:54:11] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 19:02:33] [INFO] Main: 程序执行完毕
+[2025-05-17 19:02:33] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:02:33] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:02:33] [INFO] getAllInfo: diffLength: 1836216166
+[2025-05-17 19:02:33] [ERROR] getAllInfo: 发生错误：RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 5230. Received 1836216228
+[2025-05-17 19:04:17] [INFO] Main: 程序执行完毕
+[2025-05-17 19:04:17] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:04:17] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:04:17] [INFO] getAllInfo: diffLength: 1836216166
+[2025-05-17 19:04:17] [ERROR] getAllInfo: 发生错误：RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 5230. Received 1836216228
+[2025-05-17 19:05:25] [INFO] Main: 程序执行完毕
+[2025-05-17 19:05:25] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:05:25] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:05:25] [INFO] getAllInfo: diffLength: 1836216166
+[2025-05-17 19:05:25] [ERROR] getAllInfo: 发生错误：RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 5230. Received 1836216228
+[2025-05-17 19:07:45] [INFO] Main: 程序执行完毕
+[2025-05-17 19:07:45] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:07:45] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:07:45] [INFO] getAllInfo: diffLength: 1836216166
+[2025-05-17 19:07:45] [ERROR] getAllInfo: 发生错误：RangeError [ERR_OUT_OF_RANGE]: The value of "offset" is out of range. It must be >= 0 and <= 5230. Received 1836216228
+[2025-05-17 19:09:52] [INFO] Main: 程序执行完毕
+[2025-05-17 19:09:52] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:09:52] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:09:52] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 19:09:52] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 19:09:52] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 19:10:17] [INFO] Main: 程序执行完毕
+[2025-05-17 19:10:17] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:10:17] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:10:17] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 19:10:17] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 19:10:17] [INFO] getAllInfo: authorLength: 15
+[2025-05-17 19:11:20] [INFO] Main: 程序执行完毕
+[2025-05-17 19:11:20] [INFO] ZJTB: CLI初始化
+[2025-05-17 19:11:20] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-17 19:11:20] [INFO] getAllInfo: diffLength: 10
+[2025-05-17 19:11:20] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-17 19:11:20] [INFO] getAllInfo: authorLength: 15

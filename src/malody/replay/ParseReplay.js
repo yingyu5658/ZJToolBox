@@ -19,7 +19,8 @@ const log = require('../../utils/GenerateLog.js');
 
 const MR_DATA = Buffer.from('mr data', 'utf8');
 const MR_FORMAT = Buffer.from('mr format', 'utf8');
-const md5EndOffset = 58;
+const MD5_START_OFFSET = 27;
+const MD5_END_OFFSET = 58;
 
 class ParseReplay {
   constructor() {}
@@ -28,13 +29,18 @@ class ParseReplay {
     return file.readUInt32LE(offset);
   }
 
+  getMD5(file, length) {
+    const md5 = file.toString('utf8', MD5_START_OFFSET, MD5_END_OFFSET);
+    return md5;
+  }
+
   getDiff(file, length) {
     const diff = file.toString(
       'utf8',
-      md5EndOffset + 4,
-      md5EndOffset + 4 + length,
+      MD5_END_OFFSET + 4,
+      MD5_END_OFFSET + 4 + length,
     );
-    return { diff, newOffset: md5EndOffset + 4 + length };
+    return { diff, newOffset: MD5_END_OFFSET + 4 + length };
   }
 
   getBeatmapName(file, offset, length) {
@@ -77,7 +83,6 @@ class ParseReplay {
     return { miss, newOffset: offset + 12 };
   }
 
-  // TODO: 写获取判定，0-4 abcde
   getJudge(file, offset, length) {
     let temp = file.readUInt32LE(offset);
     let judge = '';

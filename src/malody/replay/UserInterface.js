@@ -28,6 +28,7 @@ class UserInterface {
       const goodLength = INT32_LENGTH;
       const missLength = INT32_LENGTH;
       const judgeLength = INT32_LENGTH;
+      const md5 = mr.getMD5(file);
 
       const author = mr.getAuthor(file, bn.newOffset, authorLength);
       const finalScore = mr.getFinalScore(
@@ -55,48 +56,55 @@ class UserInterface {
       mrData.good = good.good;
       mrData.miss = miss.miss;
       mrData.judge = judge.judge;
+      mrData.md5 = md5;
     } catch (error) {
       log.err('getAllInfo', `发生错误：${error}`, true);
     }
     return mrData;
   }
 
-  showAllInfo(data) {
-    let judgeColor = '';
+  cutFileName(path) {
+    if (!path.includes('.mr')) {
+      return '未知';
+    }
 
-    console.log(`===回放信息===
-${colors.cyan('谱面名称')}: ${data.beatmapName}
-${colors.cyan('谱面难度')}: ${data.diff}
-${colors.cyan('谱面作者')}: ${data.author}
-${colors.cyan('最终得分')}: ${data.finalScore}
-${colors.cyan('最大连击')}: ${data.maxCombo}
-${colors.red('B E S T ')}: ${data.best}
-${colors.yellow('C O O L ')}: ${data.cool}
-${colors.green('G O O D ')}: ${data.good}
-${colors.gray('M I S S ')}: ${data.miss}`);
+    if (path.includes('/') || path.includes('./') || path.includes('.')) {
+      let fileName = path.split('/');
+      return fileName[fileName.length - 1];
+    }
+  }
+
+  showAllInfo(data, path) {
+    console.log(
+      `------------------------------------------------------
+${'文件名'}   | ${this.cutFileName(path)} 
+---------+--------------------------------------------
+${'谱面名称'} | ${data.beatmapName}
+${'谱面难度'} | ${data.diff}
+${'谱面作者'} | ${data.author}
+${'最终得分'} | ${data.finalScore}
+${'最大连击'} | ${data.maxCombo}
+${'B E S T '} | ${data.best}
+${'C O O L '} | ${data.cool}
+${'G O O D '} | ${data.good}
+${'M I S S '} | ${data.miss}
+${'谱面MD5'}  | ${data.md5}`,
+    );
     switch (data.judge) {
       case 'A':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.brightGreen(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'B':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.green(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'C':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.brightYellow(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'D':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.yellow(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'E':
-        console.log(`${colors.magenta('使用判定')}: ${colors.red(data.judge)}`);
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
     }
   }
