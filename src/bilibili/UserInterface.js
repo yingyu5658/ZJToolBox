@@ -1,11 +1,30 @@
+/**
+ * 用户接口
+ * @author yingyu5658@outlook.com
+ * @version 1.0.0
+ */
+
+
+
 const ParseVideo = require('./ParseVideo');
 const log = require('../utils/GenerateLog');
 const INFO = 'INFO';
 const WARN = 'WARN';
 const ERROR = 'ERROR';
+
+/**
+ * 命令行用户接口类，调用ParseVideo的方法，下载视频、输出日志
+ */
 class UserInterface {
   constructor() {}
 
+  /**
+   * 启动下载
+   * @param bvid 视频BV号
+   * @return {Promise<*>}
+   * @author yingyu5658@outlook.com
+   * @version 1.0.0
+   */
   async start(bvid) {
     try {
       const cid = await ParseVideo.getCid(bvid);
@@ -17,6 +36,13 @@ class UserInterface {
     }
   }
 
+  /**
+   * 启动批量下载
+   * @param filePath 存放BV列表的文本文件的路径
+   * @return {Promise<number>}
+   * @author yingyu5658@outlook.com
+   * @version 1.0.0
+   */
   async startBatch(filePath) {
     // let downloadList = []
     let n = 0;

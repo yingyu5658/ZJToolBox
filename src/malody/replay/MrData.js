@@ -1,3 +1,8 @@
+/**
+ * 回放文件的数据结构
+ * @author yingyu5658@outlook.com
+ * @version 1.0.0
+ */
 class MrData {
   constructor() {
     this.diff = '未知';

@@ -1,3 +1,9 @@
+/**
+ * 下载B站视频核心代码，包括构建完整API URL、目录操作、网络请求下载
+ * @author yingyu5658@outlook.com
+ * @version 1.0.0
+ */
+
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
@@ -11,7 +17,19 @@ axios.defaults.headers.common['Referer'] = 'https://www.bilibili.com';
 axios.defaults.headers.common['User-Agent'] =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36';
 
+
+/**
+ * 解析B站视频的链接，构建API请求并下载
+ * @class
+ */
 class ParseVideo {
+  /**
+   * 获取视频的CID，用于下一步继续构建完整的请求URL
+   * @param bvid
+   * @return {Promise<*>}
+   * @author yingyu5658@outlook.com
+   * @version 1.0.0
+   */
   static async getCid(bvid) {
     try {
       const response = await axios.get(
@@ -26,6 +44,14 @@ class ParseVideo {
     }
   }
 
+  /**
+   * 获取视频的下载链接
+   * @param bvid 视频BV号
+   * @param cid getCid()函数获取到的CID
+   * @return {Promise<*>}
+   * @author yingyu5658@outlook.com
+   * @version 1.0.0
+   */
   static async getDownloadUrl(bvid, cid) {
     try {
       const response = await axios.get(`https://api.bilibili.com/x/player/playurl?bvid=${bvid}&cid=${cid}&qn=80`);
@@ -39,6 +65,14 @@ class ParseVideo {
     }
   }
 
+  /**
+   * 正式把视频下载到本地的./BiliBiliDownloads
+   * @param bvid 视频BV号
+   * @param url getDownloadUrl()获取到的视频下载链接
+   * @return {Promise<void>}
+   * @author yingyu5658@outlool.com
+   * @version 1.0.0
+   */
   static async downloadVideo(bvid, url) {
     const referer = `https://www.bilibili.com/video/${bvid}`;
     try {

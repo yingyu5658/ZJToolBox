@@ -11217,7 +11217,7 @@ function findIdx(table, val) {
 
 /***/ }),
 
-/***/ 1708:
+/***/ 9327:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -11416,9 +11416,9 @@ var modules = [
     __nccwpck_require__(161),
     __nccwpck_require__(7607),
     __nccwpck_require__(1153),
-    __nccwpck_require__(3094),
+    __nccwpck_require__(713),
     __nccwpck_require__(5916),
-    __nccwpck_require__(1708),
+    __nccwpck_require__(9327),
 ];
 
 // Put all encoding/alias/codec definitions to single object and export it.
@@ -11708,7 +11708,7 @@ SBCSDecoder.prototype.end = function() {
 
 /***/ }),
 
-/***/ 3094:
+/***/ 713:
 /***/ ((module) => {
 
 "use strict";
@@ -19320,14 +19320,6 @@ module.exports = require("buffer");
 
 /***/ }),
 
-/***/ 4236:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("console");
-
-/***/ }),
-
 /***/ 9140:
 /***/ ((module) => {
 
@@ -19416,7 +19408,7 @@ module.exports = require("node:path");
 
 /***/ }),
 
-/***/ 9327:
+/***/ 1708:
 /***/ ((module) => {
 
 "use strict";
@@ -19698,7 +19690,7 @@ const EventEmitter = (__nccwpck_require__(8474).EventEmitter);
 const childProcess = __nccwpck_require__(1421);
 const path = __nccwpck_require__(6760);
 const fs = __nccwpck_require__(3024);
-const process = __nccwpck_require__(9327);
+const process = __nccwpck_require__(1708);
 
 const { Argument, humanReadableArgName } = __nccwpck_require__(9186);
 const { CommanderError } = __nccwpck_require__(9999);
@@ -24244,7 +24236,8 @@ class MrData {
     this.cool = 0;
     this.good = 0;
     this.miss = 0;
-    this.judge = '';
+    this.judge = '未知';
+    this.md5 = '未知';
   }
 }
 
@@ -24277,7 +24270,8 @@ const log = __nccwpck_require__(765);
 
 const MR_DATA = Buffer.from('mr data', 'utf8');
 const MR_FORMAT = Buffer.from('mr format', 'utf8');
-const md5EndOffset = 58;
+const MD5_START_OFFSET = 27;
+const MD5_END_OFFSET = 58;
 
 class ParseReplay {
   constructor() {}
@@ -24286,13 +24280,18 @@ class ParseReplay {
     return file.readUInt32LE(offset);
   }
 
+  getMD5(file, length) {
+    const md5 = file.toString('utf8', MD5_START_OFFSET, MD5_END_OFFSET);
+    return md5;
+  }
+
   getDiff(file, length) {
     const diff = file.toString(
       'utf8',
-      md5EndOffset + 4,
-      md5EndOffset + 4 + length,
+      MD5_END_OFFSET + 4,
+      MD5_END_OFFSET + 4 + length,
     );
-    return { diff, newOffset: md5EndOffset + 4 + length };
+    return { diff, newOffset: MD5_END_OFFSET + 4 + length };
   }
 
   getBeatmapName(file, offset, length) {
@@ -24335,7 +24334,6 @@ class ParseReplay {
     return { miss, newOffset: offset + 12 };
   }
 
-  // TODO: 写获取判定，0-4 abcde
   getJudge(file, offset, length) {
     let temp = file.readUInt32LE(offset);
     let judge = '';
@@ -24398,6 +24396,7 @@ class UserInterface {
       const goodLength = INT32_LENGTH;
       const missLength = INT32_LENGTH;
       const judgeLength = INT32_LENGTH;
+      const md5 = mr.getMD5(file);
 
       const author = mr.getAuthor(file, bn.newOffset, authorLength);
       const finalScore = mr.getFinalScore(
@@ -24425,48 +24424,55 @@ class UserInterface {
       mrData.good = good.good;
       mrData.miss = miss.miss;
       mrData.judge = judge.judge;
+      mrData.md5 = md5;
     } catch (error) {
       log.err('getAllInfo', `发生错误：${error}`, true);
     }
     return mrData;
   }
 
-  showAllInfo(data) {
-    let judgeColor = '';
+  cutFileName(path) {
+    if (!path.includes('.mr')) {
+      return '未知';
+    }
 
-    console.log(`===回放信息===
-${colors.cyan('谱面名称')}: ${data.beatmapName}
-${colors.cyan('谱面难度')}: ${data.diff}
-${colors.cyan('谱面作者')}: ${data.author}
-${colors.cyan('最终得分')}: ${data.finalScore}
-${colors.cyan('最大连击')}: ${data.maxCombo}
-${colors.red('B E S T ')}: ${data.best}
-${colors.yellow('C O O L ')}: ${data.cool}
-${colors.green('G O O D ')}: ${data.good}
-${colors.gray('M I S S ')}: ${data.miss}`);
+    if (path.includes('/') || path.includes('./') || path.includes('.')) {
+      let fileName = path.split('/');
+      return fileName[fileName.length - 1];
+    }
+  }
+
+  showAllInfo(data, path) {
+    console.log(
+      `------------------------------------------------------
+${'文件名'}   | ${this.cutFileName(path)} 
+---------+--------------------------------------------
+${'谱面名称'} | ${data.beatmapName}
+${'谱面难度'} | ${data.diff}
+${'谱面作者'} | ${data.author}
+${'最终得分'} | ${data.finalScore}
+${'最大连击'} | ${data.maxCombo}
+${'B E S T '} | ${data.best}
+${'C O O L '} | ${data.cool}
+${'G O O D '} | ${data.good}
+${'M I S S '} | ${data.miss}
+${'谱面MD5'}  | ${data.md5}`,
+    );
     switch (data.judge) {
       case 'A':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.brightGreen(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'B':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.green(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'C':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.brightYellow(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'D':
-        console.log(
-          `${colors.magenta('使用判定')}: ${colors.yellow(data.judge)}`,
-        );
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
       case 'E':
-        console.log(`${colors.magenta('使用判定')}: ${colors.red(data.judge)}`);
+        console.log(`${'使用判定 '}| ${data.judge}`);
         break;
     }
   }
@@ -24479,197 +24485,235 @@ module.exports = UserInterface;
 /***/ 9302:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const fs = __nccwpck_require__(9896);
-const colors = __nccwpck_require__(713);
 const log = __nccwpck_require__(765);
-const beatmapUserInterface = __nccwpck_require__(6254);
-const BilibiliVideoDownload = __nccwpck_require__(8943);
-const { Command } = __nccwpck_require__(8717);
-const root = new Command();
-const ReplayUserInterface = __nccwpck_require__(2963);
-const replayUserInterface = new ReplayUserInterface();
+const {Command} = __nccwpck_require__(8717);
+let zjtb = new Command();
 
 const INFO = 'INFO';
 const WARN = 'WARN';
 const ERROR = 'ERROR';
 
 class CLI {
-  constructor() {}
+    constructor() {}
 
-  init(VERSION, VERSION_INFO) {
-    console.log(VERSION_INFO);
+    init(VERSION, VERSION_INFO) {
+        console.log(VERSION_INFO);
+        const _init = __nccwpck_require__(5710)
+        const init = new _init()
+        zjtb = init.commandInit(zjtb, VERSION, VERSION_INFO)
 
-    root
-      .version(VERSION)
-      .description(
-        '一个简单的命令行工具，有一些和引诱相关的实用功能\n输入"zjtb --help"来获取帮助信息',
-      )
-      .option('-a, --about', '关于')
-      .option('-l, --log', '查看日志')
-      .option('--noad', '禁用广告显示')
+        //mld子命令
+        const mld = __nccwpck_require__(6213)
+        mld(zjtb)
 
-      .action((options) => {
-        if (options.about) {
-          console.log('ABOUT');
-          console.log('├── Author  : yingyu5658 ');
-          console.log(`├── version : ${VERSION_INFO} `);
-          console.log('└── Language: Javascript ');
-          console.log('作者博客：https://www.yingyu5658.me/');
-        }
+        // lbl子命令
+        const lbl = __nccwpck_require__(9824)
+        lbl(zjtb)
 
-        if (options.noad) CLI.showAD(false);
+        // ts子命令
+        const ts = __nccwpck_require__(8858)
+        ts(zjtb)
 
-        if (!options.noad) CLI.showAD(true);
+        // bvd子命令
+        const bvd = __nccwpck_require__(7538)
+        bvd(zjtb)
 
-        if (options.log) {
-          let log = fs.readFileSync(
-            './Log.log',
-            { encoding: 'utf8' },
-            (err) => {
-              if (err) console.error(err);
-            },
-          );
-          console.log(log);
-        }
-      });
-
-    // mld子命令
-    root
-      .command('mld')
-      .description('Malody功能')
-      .option(
-        '-b, --beatmap <filepath>',
-        '查看Malody谱面信息。',
-        (filePath) => {
-          log.log('INFO', 'main', '执行查看谱面信息命令');
-          beatmapUserInterface.main(filePath);
-          return filePath;
-        },
-      )
-      .option('-r, --replay <filePath>', '查看Malody回放信息。', (filePath) => {
-        let info = replayUserInterface.getAllInfo(filePath);
-        replayUserInterface.showAllInfo(info);
-      });
-
-    const lbl = __nccwpck_require__(3713);
-    const { time, timeStamp } = __nccwpck_require__(4236);
-    const Utils = __nccwpck_require__(3751);
-    // lbl子命令
-    root
-      .command('lbl')
-      .description('卢布卢功能')
-      .option('--coott', '自定义二选一', () => {
-        lbl.chooseOneOfTheTwo();
-      })
-      .option(
-        '--cofm <choiceNum>',
-        '自定义多选一 <choiceNum> 为选项总数',
-        (choiceNum) => {
-          lbl.chooseOneFromMany(choiceNum);
-        },
-      )
-      .option(
-        '-m ,--randomMusicalAlphabet <count>',
-        '生成随机顺序的音名',
-        (count) => {
-          let result = [];
-          result = lbl.randomMusicalAlphabet(count);
-          console.log(result.join(','));
-        },
-      );
-
-    root
-      .command('ts')
-      .description('时间戳转换工具')
-
-      .option(
-        '--conversion, -c <timestamp>',
-        '把时间戳转换为YYYY-MMMM-DD hh-mm的格式',
-        (timestamp) => {
-          let result = Utils.timeStampToTime(timestamp);
-          if (result == 'ERROR') {
-            return -1;
-          } else {
-            log.info('timeStampToTime', result, true);
-          }
-        },
-      );
-
-    root
-      .command('bvd')
-      .description('B站视频解析下载')
-      .option(
-        '-d, --download <bvid>',
-        '视频BV号（保留前面大写的BV）',
-        (bvid) => {
-          let bvd = new BilibiliVideoDownload();
-          bvd.start(bvid);
-        },
-      )
-      .option(
-        '-b, --batch <filePath>',
-        '批量下载。filePath：存放BV号的文本文件',
-        (filePath) => {
-          let batch = new BilibiliVideoDownload(filePath);
-          batch.startBatch(filePath);
-        },
-      );
-    log.info('ZJTB', 'CLI初始化');
-    root.parse(process.argv);
-  }
-
-  static showAD(isShow) {
-    if (isShow === false) return;
-    console.log(
-      `
-|============================|
-|            广告            |
-|----------------------------|
-|    加入醉酒哈基米谢谢喵    |
-|         591067249          |
-|----------------------------|
-|访问yingyu5658的万事屋谢谢喵|
-| https://www.yingyu5658.me  |
-|============================|
-`,
-    );
-    log.info('AD', '广告投放完成', false);
-  }
+        zjtb.parse(process.argv);
+        log.info('ZJTB', 'CLI初始化完成');
+    }
 }
 
 module.exports = CLI;
 
+/***/ }),
+
+/***/ 5710:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {Command} = __nccwpck_require__(8717)
+const Zjtb = __nccwpck_require__(1598)
+const zjtb = new Zjtb()
+
+class Init {
+    commandInit(command, VERSION, VERSION_INFO) {
+       command
+            .version(VERSION)
+            .description('一个简单的命令行工具，有一些和引诱相关的实用功能\n输入"zjtb --help"来获取帮助信息',)
+            .option('-a, --about', '关于')
+            .option('-l, --log', '查看日志')
+            .option('--noad', '禁用广告显示')
+            .action((options) => {
+                if (options.about) zjtb.showAbout(VERSION)
+                if (options.log) zjtb.showLog()
+
+                options.noad === true ? zjtb.showAD(false) : zjtb.showAD();
+            });
+
+       return command
+    }
+}
+
+module.exports = Init
 
 /***/ }),
 
-/***/ 713:
-/***/ ((module) => {
+/***/ 7538:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-// Colors.js
-const Colors = {
-  // 基础颜色
-  red: '\x1b[31m',
-  green: '\x1b[32m',
-  yellow: '\x1b[33m',
-  blue: '\x1b[34m',
-  magenta: '\x1b[35m',
-  cyan: '\x1b[36m',
-  white: '\x1b[37m',
+const BilibiliVideoDownload = __nccwpck_require__(8943)
 
-  // 背景颜色
-  bgRed: '\x1b[41m',
-  bgGreen: '\x1b[42m',
-  bgYellow: '\x1b[43m',
-  bgBlue: '\x1b[44m',
+module.exports = (bvd) => {
+    bvd
+        .command('bvd')
+        .description('B站视频解析下载')
+        .option(
+            '-d, --download <bvid>',
+            '视频BV号（保留前面大写的BV）',
+            (bvid) => {
+                let bvd = new BilibiliVideoDownload();
+                bvd.start(bvid);
+            },
+        )
+        .option(
+            '-b, --batch <filePath>',
+            '批量下载。filePath：存放BV号的文本文件',
+            (filePath) => {
+                let batch = new BilibiliVideoDownload(filePath);
+                batch.startBatch(filePath);
+            },
+        );
+}
 
-  // 样式
-  bold: '\x1b[1m',
-  underline: '\x1b[4m',
-  reset: '\x1b[0m', // 重置所有样式
-};
+/***/ }),
 
-module.exports = Colors;
+/***/ 9824:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
+const lbl = __nccwpck_require__(3713);
+
+module.exports = (lblCommand) => {
+    lblCommand
+        .command('lbl')
+        .description('卢布卢功能')
+        .option('--coott', '自定义二选一', () => {
+            lbl.chooseOneOfTheTwo();
+        })
+        .option(
+            '--cofm <choiceNum>',
+            '自定义多选一 <choiceNum> 为选项总数',
+            (choiceNum) => {
+                lbl.chooseOneFromMany(choiceNum);
+            },
+        )
+        .option(
+            '-m ,--randomMusicalAlphabet <count>',
+            '生成随机顺序的音名',
+            (count) => {
+                let result = [];
+                result = lbl.randomMusicalAlphabet(count);
+                console.log(result.join(','));
+            },
+        );
+}
+
+/***/ }),
+
+/***/ 6213:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const beatmapUserInterface = __nccwpck_require__(6254);
+const ReplayUserInterface = __nccwpck_require__(2963);
+const replayUserInterface = new ReplayUserInterface();
+const log = __nccwpck_require__(765);
+
+module.exports = (mld) => {
+    mld
+        .command('mld')
+        .description('Malody功能')
+        .option('-b, --beatmap <filepath>', '查看Malody谱面信息。', (filePath) => {
+                log.log('INFO', 'main', '执行查看谱面信息命令');
+                beatmapUserInterface.main(filePath);
+                return filePath;
+            },
+        )
+        .option('-r, --replay <filePath>', '查看Malody回放信息。', (filePath) => {
+            let info = replayUserInterface.getAllInfo(filePath);
+            replayUserInterface.showAllInfo(info, filePath);
+        });
+}
+
+/***/ }),
+
+/***/ 8858:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const log = __nccwpck_require__(765);
+const utils = __nccwpck_require__(3751)
+
+module.exports = (ts) => {
+    ts
+        .command('ts')
+        .description('时间戳转换工具')
+        .option(
+            '--conversion, -c <timestamp>',
+            '把时间戳转换为YYYY-MMMM-DD hh-mm的格式',
+            (timestamp) => {
+                let result = utils.timeStampToTime(timestamp);
+                if (result == 'ERROR') {
+                    return -1;
+                } else {
+                    log.info('timeStampToTime', result, true);
+                }
+            },
+        );
+}
+
+/***/ }),
+
+/***/ 1598:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const log = __nccwpck_require__(765)
+const fs = __nccwpck_require__(9896)
+
+class zjtb {
+    constructor() {
+    }
+
+    showLog() {
+        let log = fs.readFileSync('./Log.log', {encoding: 'utf8'}, (err) => {
+            if (err) console.error(err);
+        },);
+        console.log(log);
+    }
+
+    showAbout(VERSION, VERSION_INFO) {
+        console.log('ABOUT');
+        console.log('├── Author  : yingyu5658 ');
+        console.log(`├── version : ${VERSION_INFO} `);
+        console.log('└── Language: Javascript ');
+        console.log('作者博客：https://www.yingyu5658.me/');
+    }
+
+    showAD(isShow) {
+           if (isShow === false) return;
+           console.log(`
+   |============================|
+   |            广告            |
+   |----------------------------|
+   |    加入醉酒哈基米谢谢喵    |
+   |         591067249          |
+   |----------------------------|
+   |访问yingyu5658的万事屋谢谢喵|
+   | https://www.yingyu5658.me  |
+   |============================|
+   `,
+           );
+           log.info('AD', '广告投放完成', false);
+       }
+}
+
+module.exports = zjtb
 
 /***/ }),
 
@@ -24690,106 +24734,100 @@ const logTime = `[${year}-${month.toString().padStart(2, '0')}-${day.toString().
 const fs = __nccwpck_require__(9896);
 const colors = __nccwpck_require__(126);
 const LogLevel = {
-  INFO: '[INFO] ',
-  WARN: '[WARN] ',
-  ERROR: '[ERROR] ',
+    INFO: '[INFO] ', WARN: '[WARN] ', ERROR: '[ERROR] ',
 };
 
 class GenerateLog {
-  static writeLogToFile(logLevel, information) {
-    fs.appendFile('Log.log', information, 'utf8', (err) => {
-      if (err) throw err;
-      return;
-    });
-  }
+    static writeLogToFile(logLevel, information) {
+        fs.appendFile('Log.log', information, 'utf8', (err) => {
+            if (err) throw err;
 
-  static getLogTime() {
-    return logTime;
-  }
-
-  static info(serve, information, outputLogOnsole) {
-    const timestamp = this.getLogTime();
-    const prefix = INFO;
-    const serveName = serve;
-    const fix = ': ';
-    const outputLog = `${timestamp}${colors.green(prefix)}${serveName}${fix}${information}\n`;
-    const writeLog = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
-    if (outputLogOnsole) console.log(outputLog);
-    GenerateLog.writeLogToFile(INFO, writeLog);
-  }
-
-  static warn(serve, information, outputLogOnsole) {
-    const timestamp = this.getLogTime();
-    const prefix = WARN;
-    const serveName = serve;
-    const fix = ': ';
-    const outputLog = `${timestamp}${colors.yellow(prefix)}${serveName}${fix}${information}\n`;
-    const writeLog = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
-
-    if (outputLogOnsole) console.log(outputLog);
-    GenerateLog.writeLogToFile(WARN, writeLog);
-  }
-
-  static err(serve, information, outputLogOnsole) {
-    const timestamp = this.getLogTime();
-    const prefix = ERROR;
-    const serveName = serve;
-    const fix = ': ';
-    const outputLog = `${timestamp}${colors.red(prefix)}${serveName}${fix}${information}\n`;
-    const writeLog = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
-
-    if (outputLogOnsole) console.log(outputLog);
-    GenerateLog.writeLogToFile(WARN, writeLog);
-  }
-
-  /*
-   * @param logLevel 日志级别
-   * @param log 日志内容
-   */
-  static outputLogSync(logLevel, log) {
-    fs.appendFileSync('Log.log', log, 'utf8', function (err) {
-      console.error(err);
-    });
-  }
-
-  /* 拼接日志并输出日志到控制台和文件
-   * @param logLevel 日志级别 INFO WARN ERROR
-   * @param data 日志内容
-   * @param outputLogOnsole 是否输出到控制台
-   * @param serve 日志服务名称
-   */
-  static log(logLevel, serve, data, outputLogOnsole = false) {
-    if (!LogLevel[logLevel]) {
-      console.error('日志级别错误', LogLevel[logLevel]);
-      return -1;
+        });
     }
-    const timestamp = this.getLogTime();
-    const prefix = LogLevel[logLevel];
-    const serveName = serve;
-    const fix = ': ';
-    let log = `${timestamp}${prefix}${serveName}${fix}${data}\n`;
-    this.outputLogSync(logLevel, log);
 
-    // 判断是否输出到控制台
-    if (!outputLogOnsole) {
-      return;
-    } else {
-      if (LogLevel[logLevel] === LogLevel.INFO) {
-        console.log(
-          `${timestamp}${colors.green(prefix)}${serve}${fix}${data}\n`,
-        );
-      }
-      if (LogLevel[logLevel] === LogLevel.WARN) {
-        console.log(
-          `${timestamp}${colors.yellow(prefix)}${serve}${fix}${data}\n`,
-        );
-      }
-      if (LogLevel[logLevel] === LogLevel.ERROR) {
-        console.log(`${timestamp}${colors.red(prefix)}${serve}${fix}${data}\n`);
-      }
+    static getLogTime() {
+        return logTime;
     }
-    return log;
-  }
+
+    static info(serve, information, outputLogOnsole) {
+        const timestamp = this.getLogTime();
+        const prefix = INFO;
+        const serveName = serve;
+        const fix = ': ';
+        const outputLog = `${timestamp}${colors.green(prefix)}${serveName}${fix}${information}\n`;
+        const writeLog = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
+        if (outputLogOnsole) console.log(outputLog);
+        GenerateLog.writeLogToFile(INFO, writeLog);
+    }
+
+    static warn(serve, information, outputLogOnsole) {
+        const timestamp = this.getLogTime();
+        const prefix = WARN;
+        const serveName = serve;
+        const fix = ': ';
+        const outputLog = `${timestamp}${colors.yellow(prefix)}${serveName}${fix}${information}\n`;
+        const writeLog = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
+
+        if (outputLogOnsole) console.log(outputLog);
+        GenerateLog.writeLogToFile(WARN, writeLog);
+    }
+
+    static err(serve, information, outputLogOnsole) {
+        const timestamp = this.getLogTime();
+        const prefix = ERROR;
+        const serveName = serve;
+        const fix = ': ';
+        const outputLog = `${timestamp}${colors.red(prefix)}${serveName}${fix}${information}\n`;
+        const writeLog = `${timestamp}${prefix}${serveName}${fix}${information}\n`;
+
+        if (outputLogOnsole) console.log(outputLog);
+        GenerateLog.writeLogToFile(WARN, writeLog);
+    }
+
+    /*
+     * @param logLevel 日志级别
+     * @param log 日志内容
+     */
+    static outputLogSync(logLevel, log) {
+        fs.appendFileSync('Log.log', log, 'utf8', function (err) {
+            console.error(err);
+        });
+    }
+
+    /* 拼接日志并输出日志到控制台和文件
+     * @param logLevel 日志级别 INFO WARN ERROR
+     * @param data 日志内容
+     * @param outputLogOnsole 是否输出到控制台
+     * @param serve 日志服务名称
+     */
+    static log(logLevel, serve, data, outputLogOnsole = false) {
+        if (!LogLevel[logLevel]) {
+            console.error('日志级别错误', LogLevel[logLevel]);
+            return -1;
+        }
+        const timestamp = this.getLogTime();
+        const prefix = LogLevel[logLevel];
+        const serveName = serve;
+        const fix = ': ';
+        let log = `${timestamp}${prefix}${serveName}${fix}${data}\n`;
+        this.outputLogSync(logLevel, log);
+
+        // 判断是否输出到控制台
+        if (!outputLogOnsole) {
+            return;
+        } else {
+            if (LogLevel[logLevel] === LogLevel.INFO) {
+                console.log(`${timestamp}${colors.green(prefix)}${serve}${fix}${data}\n`,);
+            }
+            if (LogLevel[logLevel] === LogLevel.WARN) {
+                console.log(`${timestamp}${colors.yellow(prefix)}${serve}${fix}${data}\n`,);
+            }
+            if (LogLevel[logLevel] === LogLevel.ERROR) {
+                console.log(`${timestamp}${colors.red(prefix)}${serve}${fix}${data}\n`);
+            }
+        }
+        return log;
+    }
 }
 
 module.exports = GenerateLog;
@@ -24804,8 +24842,6 @@ const AD = `
 加入醉酒哈基米591067249谢谢喵
 关注www.yingyu5658.cn谢谢喵
 `;
-
-
 const INFO = "INFO"
 const WARN = "WARN"
 const ERROR = "ERROR"
@@ -24814,42 +24850,42 @@ const log = __nccwpck_require__(765)
 
 
 class Utils {
-  static clearScreen() {
-    // ANSI 转义序列：
-    // - \x1b[H: 移动光标到屏幕左上角
-    // - \x1b[0J: 清除从光标位置到屏幕末尾的内容（不清除历史缓冲区）
-    process.stdout.write("\x1b[H");
-  }
-
-  static showAD() {
-    console.log(AD);
-  }
-
-  /**
- * 
- * 时间戳转换到正常格式时间
- * 
- * @param {number} timestamp 时间戳
- * @returns {stirng} result YYYY-MM-DD hh:mm格式的时间
- */
-
-
-  static timeStampToTime(timestamp) {
-    const date = new Date(timestamp * 1000);
-    const Y = date.getFullYear();
-    const M = String(date.getMonth() + 1).padStart(2, '0');
-    const D = String(date.getDate()).padStart(2, '0');
-    const h = String(date.getHours()).padStart(2, '0');
-    const m = String(date.getMinutes()).padStart(2, '0');
-    let result = `${Y}-${M}-${D} ${h}:${m}`;
-    if (result.includes("NaN")) {
-      log.log(ERROR, "timeStampToTime", "错误：时间戳有误：" + timestamp, true)
-
-      return ERROR
-    } else {
-      return result
+    static clearScreen() {
+        // ANSI 转义序列：
+        // - \x1b[H: 移动光标到屏幕左上角
+        // - \x1b[0J: 清除从光标位置到屏幕末尾的内容（不清除历史缓冲区）
+        process.stdout.write("\x1b[H");
     }
-  }
+
+    static showAD() {
+        console.log(AD);
+    }
+
+    /**
+     *
+     * 时间戳转换到正常格式时间
+     *
+     * @param {number} timestamp 时间戳
+     * @returns {stirng} result YYYY-MM-DD hh:mm格式的时间
+     */
+
+
+    static timeStampToTime(timestamp) {
+        const date = new Date(timestamp * 1000);
+        const Y = date.getFullYear();
+        const M = String(date.getMonth() + 1).padStart(2, '0');
+        const D = String(date.getDate()).padStart(2, '0');
+        const h = String(date.getHours()).padStart(2, '0');
+        const m = String(date.getMinutes()).padStart(2, '0');
+        let result = `${Y}-${M}-${D} ${h}:${m}`;
+        if (result.includes("NaN")) {
+            log.log(ERROR, "timeStampToTime", "错误：时间戳有误：" + timestamp, true)
+
+            return ERROR
+        } else {
+            return result
+        }
+    }
 }
 
 module.exports = Utils;
@@ -29741,15 +29777,26 @@ module.exports = /*#__PURE__*/JSON.parse('{"application/1d-interleaved-parityfec
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
+const startTime = process.hrtime()
 const log = __nccwpck_require__(765);
-
 const CLI = __nccwpck_require__(9302);
 const VERSION = '1.4.0';
-const VERSION_INFO = `ZJTB @${VERSION}`;
-
-let cli = new CLI();
+const VERSION_INFO =
+    String.raw
+` _____   _ _____           _ ____
+|__  /  | |_   _|__   ___ | | __ )  _____  __
+  / /_  | | | |/ _ \ / _ \| |  _ \ / _ \ \/ /
+ / /| |_| | | | (_) | (_) | | |_) | (_) >  <
+/____\___/  |_|\___/ \___/|_|____/ \___/_/\_\
+ZJTB @${VERSION}`;
+const cli = new CLI();
 cli.init(VERSION, VERSION_INFO);
-log.log('INFO', 'Main', '程序执行完毕');
+log.log('INFO', 'Main', '程序执行结束');
+const diff = process.hrtime(startTime)
+const nanoseconds = diff[0] * 1e9 + diff[1]
+const time = nanoseconds / 1e6
+log.info( 'Main', `程序结束，总用时：${time} ms`);
+
 module.exports = __webpack_exports__;
 /******/ })()
 ;

@@ -302,3 +302,147 @@
 [2025-05-17 19:11:20] [INFO] getAllInfo: diffLength: 10
 [2025-05-17 19:11:20] [INFO] getAllInfo: diff.newOffset: 72
 [2025-05-17 19:11:20] [INFO] getAllInfo: authorLength: 15
+[2025-05-18 09:10:00] [INFO] Main: 程序执行完毕
+[2025-05-18 09:10:00] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:10:00] [INFO] AD: 广告投放完成
+[2025-05-18 09:10:52] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 09:10:52] [INFO] Main: 程序执行完毕
+[2025-05-18 09:10:52] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:10:52] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'a'
+[2025-05-18 09:10:52] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 09:11:13] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 09:11:13] [INFO] Main: 程序执行完毕
+[2025-05-18 09:11:13] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:11:13] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'a'
+[2025-05-18 09:11:13] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 09:13:58] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 09:13:58] [INFO] Main: 程序执行完毕
+[2025-05-18 09:13:58] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:13:58] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'a'
+[2025-05-18 09:13:58] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 09:14:19] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 09:14:19] [INFO] Main: 程序执行完毕
+[2025-05-18 09:14:19] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:14:19] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'a'
+[2025-05-18 09:14:19] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 09:16:16] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 09:16:16] [INFO] Main: 程序执行完毕
+[2025-05-18 09:16:16] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:16:16] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open 'a'
+[2025-05-18 09:16:16] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 09:24:53] [INFO] Main: 程序执行完毕
+[2025-05-18 09:24:53] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:25:03] [INFO] Main: 程序执行完毕
+[2025-05-18 09:25:03] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:32:05] [INFO] Main: 程序执行完毕
+[2025-05-18 09:32:05] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:32:08] [INFO] Main: 程序执行完毕
+[2025-05-18 09:32:08] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:32:08] [INFO] AD: 广告投放完成
+[2025-05-18 09:38:55] [INFO] Main: 程序执行完毕
+[2025-05-18 09:38:55] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:38:55] [INFO] AD: 广告投放完成
+[2025-05-18 09:38:58] [INFO] Main: 程序执行完毕
+[2025-05-18 09:38:58] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:39:44] [INFO] Main: 程序执行完毕
+[2025-05-18 09:39:44] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:39:44] [INFO] AD: 广告投放完成
+[2025-05-18 09:39:46] [INFO] Main: 程序执行完毕
+[2025-05-18 09:39:46] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:39:46] [INFO] AD: 广告投放完成
+[2025-05-18 09:40:38] [INFO] Main: 程序执行完毕
+[2025-05-18 09:40:38] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:40:38] [INFO] AD: 广告投放完成
+[2025-05-18 09:44:16] [INFO] Main: 程序执行完毕
+[2025-05-18 09:44:16] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:44:16] [INFO] timeStampToTime: 1970-01-01 08:00
+[2025-05-18 09:48:23] [INFO] Main: 程序执行完毕
+[2025-05-18 09:48:23] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:48:23] [ERROR] getCid: [×] 在处理 a 时发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-05-18 09:48:23] [ERROR] BilibiliVideoDownload:  发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-05-18 09:48:59] [INFO] Main: 程序执行完毕
+[2025-05-18 09:48:59] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:48:59] [ERROR] getCid: [×] 在处理 a 时发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-05-18 09:48:59] [ERROR] BilibiliVideoDownload:  发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-05-18 09:49:02] [INFO] Main: 程序执行完毕
+[2025-05-18 09:49:02] [INFO] AD: 广告投放完成
+[2025-05-18 09:49:02] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:50:21] [INFO] Main: 程序执行完毕
+[2025-05-18 09:50:21] [INFO] AD: 广告投放完成
+[2025-05-18 09:50:21] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:50:24] [INFO] Main: 程序执行完毕
+[2025-05-18 09:50:24] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:50:26] [INFO] Main: 程序执行完毕
+[2025-05-18 09:50:26] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:50:41] [INFO] Main: 程序执行完毕
+[2025-05-18 09:50:41] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:50:41] [ERROR] getCid: [×] 在处理 a 时发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-05-18 09:50:41] [ERROR] BilibiliVideoDownload:  发生错误：TypeError: Cannot read properties of undefined (reading 'pages')
+[2025-05-18 09:50:58] [INFO] Main: 程序执行完毕
+[2025-05-18 09:50:58] [ERROR] getAllInfo: 发生错误：Error: EISDIR: illegal operation on a directory, read
+[2025-05-18 09:50:58] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:51:06] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 09:51:06] [INFO] Main: 程序执行完毕
+[2025-05-18 09:51:06] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:51:06] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open './a'
+[2025-05-18 09:51:06] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 09:51:29] [ERROR] timeStampToTime: 错误：时间戳有误：a
+[2025-05-18 09:51:29] [INFO] Main: 程序执行完毕
+[2025-05-18 09:51:29] [INFO] ZJTB: CLI初始化
+[2025-05-18 09:58:50] [ERROR] timeStampToTime: 错误：时间戳有误：a
+[2025-05-18 09:58:50] [INFO] Main: 程序执行完毕
+[2025-05-18 09:58:50] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:02:40] [INFO] Main: 程序执行完毕
+[2025-05-18 10:02:40] [INFO] AD: 广告投放完成
+[2025-05-18 10:02:40] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:03:04] [INFO] Main: 程序执行完毕
+[2025-05-18 10:03:04] [INFO] AD: 广告投放完成
+[2025-05-18 10:03:04] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:03:48] [INFO] Main: 程序执行完毕
+[2025-05-18 10:03:48] [INFO] AD: 广告投放完成
+[2025-05-18 10:03:48] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:10:39] [INFO] Main: 程序执行结束
+[2025-05-18 10:10:39] [INFO] AD: 广告投放完成
+[2025-05-18 10:10:39] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:10:39] [INFO] INFO: Main
+[2025-05-18 10:11:59] [INFO] Main: 程序执行结束
+[2025-05-18 10:11:59] [INFO] AD: 广告投放完成
+[2025-05-18 10:11:59] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:11:59] [INFO] INFO: Main
+[2025-05-18 10:12:19] [INFO] Main: 程序执行结束
+[2025-05-18 10:12:19] [INFO] AD: 广告投放完成
+[2025-05-18 10:12:19] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:12:19] [INFO] Main: 总用时：NaN ms
+[2025-05-18 10:16:04] [INFO] Main: 程序执行结束
+[2025-05-18 10:16:10] [INFO] Main: 程序执行结束
+[2025-05-18 10:16:43] [INFO] Main: 程序执行结束
+[2025-05-18 10:16:43] [INFO] AD: 广告投放完成
+[2025-05-18 10:16:43] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:16:43] [INFO] INFO: Main
+[2025-05-18 10:16:55] [INFO] Main: 程序执行结束
+[2025-05-18 10:16:55] [INFO] AD: 广告投放完成
+[2025-05-18 10:16:55] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:16:55] [INFO] Main: 总用时：95.9062 ms
+[2025-05-18 10:17:30] [INFO] Main: 程序执行结束
+[2025-05-18 10:17:30] [INFO] AD: 广告投放完成
+[2025-05-18 10:17:30] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:17:30] [INFO] Main: 程序结束，总用时：90.739701 ms
+[2025-05-18 10:17:43] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 10:17:43] [INFO] Main: 程序执行结束
+[2025-05-18 10:17:43] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:17:43] [INFO] Main: 程序结束，总用时：91.237102 ms
+[2025-05-18 10:17:43] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open './a'
+[2025-05-18 10:17:43] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 10:17:47] [INFO] main: 执行查看谱面信息命令
+[2025-05-18 10:17:47] [INFO] Main: 程序执行结束
+[2025-05-18 10:17:47] [INFO] ZJTB: CLI初始化
+[2025-05-18 10:17:47] [INFO] Main: 程序结束，总用时：90.5161 ms
+[2025-05-18 10:17:47] [ERROR] UnzipBeatmap: 解压谱面时发生错误ENOENT: no such file or directory, open './a'
+[2025-05-18 10:17:47] [ERROR] showBeatmapChoices: 错误：文件的格式似乎不对呢 
+[2025-05-18 10:20:58] [INFO] Main: 程序执行结束
+[2025-05-18 10:20:58] [INFO] getAllInfo: 回放文件路径：./test/20190801-215842-Malody 4K Hachiroku Cup (Grand Finals).mr
+[2025-05-18 10:20:58] [INFO] getAllInfo: diffLength: 10
+[2025-05-18 10:20:58] [INFO] getAllInfo: diff.newOffset: 72
+[2025-05-18 10:20:58] [INFO] getAllInfo: authorLength: 15
+[2025-05-18 10:20:58] [INFO] ZJTB: CLI初始化完成
+[2025-05-18 10:20:58] [INFO] Main: 程序结束，总用时：40.384202 ms
