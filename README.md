@@ -16,7 +16,6 @@ Usage: Main [options] [command]
 Options:
   -V, --version  output the version number
   -a, --about    关于
-  -l, --log      查看日志
   -h, --help     display help for command
 
 Commands:

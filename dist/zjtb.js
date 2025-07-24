@@ -24765,7 +24765,6 @@ class Init {
       .option('--noad', '禁用广告显示')
       .action((options) => {
         if (options.about) zjtb.showAbout(VERSION);
-        if (options.log) zjtb.showLog();
 
         options.noad === true ? zjtb.showAD(false) : zjtb.showAD();
       });
@@ -24924,13 +24923,6 @@ const fs = __nccwpck_require__(9896)
 
 class zjtb {
     constructor() {
-    }
-
-    showLog() {
-        let log = fs.readFileSync('./Log.log', {encoding: 'utf8'}, (err) => {
-            if (err) console.error(err);
-        },);
-        console.log(log);
     }
 
     showAbout(VERSION, VERSION_INFO) {
