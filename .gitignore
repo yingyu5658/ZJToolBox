@@ -4,3 +4,5 @@
 ./*.log
 ./dist
 ./*.mr
+./*.mcz
+./BiliBiliDownloads/
