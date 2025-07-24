@@ -6,3 +6,4 @@
 ./*.mr
 ./*.mcz
 ./BiliBiliDownloads/
+./dist/
