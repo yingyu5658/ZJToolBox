@@ -9,12 +9,6 @@ class Init {
             .description(
                 '有一些实用功能',
             )
-            .option('-a, --about', '关于')
-            .action((options) => {
-                if (options.about) zjtb.showAbout(VERSION);
-
-            });
-
         return command;
     }
 }
